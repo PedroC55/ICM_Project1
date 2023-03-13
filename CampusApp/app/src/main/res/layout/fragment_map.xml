@@ -9,10 +9,10 @@
         android:id="@+id/imageView4"
         android:layout_width="414dp"
         android:layout_height="730dp"
+        android:contentDescription="@string/map_of_the_campus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/page_1_thumb_large"
-        android:contentDescription="@string/map_of_the_campus" />
+        app:srcCompat="@drawable/page_1_thumb_large" />
 </androidx.constraintlayout.widget.ConstraintLayout>
