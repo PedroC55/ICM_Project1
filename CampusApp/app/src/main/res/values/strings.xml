@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="classroom_search">Classroom Search</string>
+    <string name="schedule">Schedule</string>
+    <string name="courses">Courses</string>
+    <string name="where_am_i">Where Am I?</string>
+    <string name="campus_map">Campus Map</string>
+    <string name="events">Events</string>
+    <string name="book_classroom">Book Classroom</string>
+    <string name="map_of_the_campus">Map of the Campus</string>
 </resources>
