@@ -8,4 +8,10 @@
     <string name="events">Events</string>
     <string name="book_classroom">Book Classroom</string>
     <string name="map_of_the_campus">Map of the Campus</string>
+    <string name="password">PassWord:</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="logo">Logo</string>
+    <string name="login">LogIn</string>
+    <string name="password_hint">Password</string>
+    <string name="e_mail_hint">E-Mail</string>
 </resources>
