@@ -14,4 +14,10 @@
     <string name="login">LogIn</string>
     <string name="password_hint">Password</string>
     <string name="e_mail_hint">E-Mail</string>
+    <string name="table_layout_4_open" />
+    <string name="table_layout_4_open_shortcut" />
+    <string name="table_layout_4_save" />
+    <string name="table_layout_4_save_shortcut" />
+    <string name="search">Search</string>
+    <string name="where_are_you_going">Where are you going?</string>
 </resources>
