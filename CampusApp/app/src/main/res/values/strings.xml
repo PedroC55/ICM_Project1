@@ -20,4 +20,15 @@
     <string name="table_layout_4_save_shortcut" />
     <string name="search">Search</string>
     <string name="where_are_you_going">Where are you going?</string>
+    <string name="doc_identifica_o"><b>Identification Num.</b> \n 1234567</string>
+    <string name="number_doc">12345678</string>
+    <string name="informa_es_pessoais">Personal Informations</string>
+    <string name="n_mec"><b>N_Mec</b> \n 123456 </string>
+    <string name="telem_vel"><b>Phone Number</b> \n 931111111</string>
+    <string name="profile">Profile</string>
+    <string name="alberto_dos_reis">Alberto dos Reis</string>
+    <string name="nif"><b>NIF</b> \n 123456789</string>
+    <string name="localidade"><b>Nacionality</b> \n Portugal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
