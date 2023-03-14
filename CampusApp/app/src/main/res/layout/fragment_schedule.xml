@@ -9,24 +9,19 @@
         >
 
         <TextView
-            android:text="Semester Courses"
+            android:text="@string/schedule"
             android:textSize="20sp"
             android:textStyle="bold"
             android:padding="20sp" />
     </TableRow>
 
     <TableRow
-        android:background="@color/light_blue">
+        android:background="@color/light_blue"
+        android:gravity="center_horizontal">
         <TextView
-            android:text="Course Name"
+            android:text="Monday"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:padding="20sp" />
-        <TextView
-            android:text="Attendance"
-            android:textStyle="bold"
-            android:gravity="center"
             android:textSize="20sp"
             android:padding="20sp" />
     </TableRow>
@@ -38,10 +33,17 @@
             android:textSize="20sp"
             android:padding="20sp" />
         <TextView
-            android:text="5/5"
+            android:text="14:00-16:00"
             android:gravity="center"
             android:textSize="20sp"
             android:padding="20sp" />
+        <TextView
+            android:text="4.01.02"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+
+
     </TableRow>
 
     <TableRow>
@@ -51,12 +53,26 @@
             android:textSize="20sp"
             android:padding="20sp" />
         <TextView
-            android:text="7/8"
+            android:text="16:00-18:00"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="4.01.06"
             android:gravity="center"
             android:textSize="20sp"
             android:padding="20sp" />
     </TableRow>
-
+    <TableRow
+        android:background="@color/light_blue"
+        android:gravity="center_horizontal">
+        <TextView
+            android:text="Tuesday"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
     <TableRow>
         <TextView
             android:text="Course 3"
@@ -64,7 +80,12 @@
             android:textSize="20sp"
             android:padding="20sp" />
         <TextView
-            android:text="2/4"
+            android:text="13:00-15:00"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="4.02.09"
             android:gravity="center"
             android:textSize="20sp"
             android:padding="20sp" />
@@ -77,8 +98,23 @@
             android:textSize="20sp"
             android:padding="20sp" />
         <TextView
-            android:text="5/5"
+            android:text="15:00-17:00"
             android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="4.01.10"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+    <TableRow
+        android:background="@color/light_blue"
+        android:gravity="center_horizontal">
+        <TextView
+            android:text="@string/wednesday"
+            android:gravity="center"
+            android:textStyle="bold"
             android:textSize="20sp"
             android:padding="20sp" />
     </TableRow>
@@ -89,7 +125,12 @@
             android:textSize="20sp"
             android:padding="20sp" />
         <TextView
-            android:text="4/5"
+            android:text="10:00-13:00"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="23.02.10"
             android:gravity="center"
             android:textSize="20sp"
             android:padding="20sp" />
