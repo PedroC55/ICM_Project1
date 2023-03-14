@@ -7,7 +7,7 @@
     android:background="#2196F3">
 
     <ImageButton
-        android:id="@+id/imageView2"
+        android:id="@+id/profile_button"
         android:layout_width="85dp"
         android:layout_height="83dp"
         android:background="#415BED"

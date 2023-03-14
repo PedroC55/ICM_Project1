@@ -18,5 +18,62 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.myapplication.DashboardFragment"
         android:label="DashboardFragment"
-        tools:layout="@layout/fragment_dashboard"/>
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_coursesBeingTakenFragment"
+            app:destination="@id/coursesBeingTakenFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_nearByEventsFragment"
+            app:destination="@id/nearByEventsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_pathToClassroomFragment"
+            app:destination="@id/pathToClassroomFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_findCampusFragment"
+            app:destination="@id/findCampusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.myapplication.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map"/>
+    <fragment
+        android:id="@+id/coursesBeingTakenFragment"
+        android:name="com.example.myapplication.CoursesBeingTakenFragment"
+        android:label="CoursesBeingTakenFragment"
+        tools:layout="@layout/fragment_courses"/>
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.example.myapplication.ScheduleFragment"
+        android:label="ScheduleFragment"
+        tools:layout="@layout/fragment_schedule"/>
+    <fragment
+        android:id="@+id/nearByEventsFragment"
+        android:name="com.example.myapplication.NearByEventsFragment"
+        android:label="NearByEventsFragment"
+        tools:layout="@layout/fragment_events"/>
+    <fragment
+        android:id="@+id/pathToClassroomFragment"
+        android:name="com.example.myapplication.PathToClassroomFragment"
+        android:label="PathToClassroomFragment"
+        tools:layout="@layout/fragment_path_to_classroom"/>
+    <fragment
+        android:id="@+id/findCampusFragment"
+        android:name="com.example.myapplication.FindCampusFragment"
+        android:label="FindCampusFragment"
+        tools:layout="@layout/fragment_where_am_i"/>
 </navigation>
