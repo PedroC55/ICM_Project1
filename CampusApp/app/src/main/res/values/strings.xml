@@ -29,4 +29,6 @@
     <string name="alberto_dos_reis">Alberto dos Reis</string>
     <string name="nif"><b>NIF</b> \n 123456789</string>
     <string name="localidade"><b>Nacionality</b> \n Portugal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
