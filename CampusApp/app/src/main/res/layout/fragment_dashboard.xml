@@ -10,7 +10,7 @@
         android:id="@+id/profile_button"
         android:layout_width="85dp"
         android:layout_height="83dp"
-        android:background="#415BED"
+        android:background="#2196F3"
         android:contentDescription="User Logo"
         android:src="@drawable/user"
         app:layout_constraintBottom_toBottomOf="parent"

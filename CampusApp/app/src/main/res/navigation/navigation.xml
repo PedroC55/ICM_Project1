@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_findCampusFragment"
             app:destination="@id/findCampusFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_classroomScheduleFragment"
+            app:destination="@id/classroomScheduleFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -76,4 +79,9 @@
         android:name="com.example.myapplication.FindCampusFragment"
         android:label="FindCampusFragment"
         tools:layout="@layout/fragment_where_am_i"/>
+    <fragment
+        android:id="@+id/classroomScheduleFragment"
+        android:name="com.example.myapplication.ClassroomScheduleFragment"
+        android:label="ClassroomScheduleFragment"
+        tools:layout="@layout/fragment_book_classroom"/>
 </navigation>
