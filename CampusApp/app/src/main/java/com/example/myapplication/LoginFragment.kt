@@ -5,6 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.databinding.DataBindingUtil.setContentView
+
+import com.example.myapplication.databinding.ActivityMainBinding
+
+import androidx.navigation.findNavController
 
 
 class LoginFragment : Fragment(R.layout.login) {
@@ -15,7 +21,11 @@ class LoginFragment : Fragment(R.layout.login) {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.login, container, false)
+        val view = inflater.inflate(R.layout.login, container, false)
+        val button: Button = view.findViewById(R.id.button_login)
+        button.setOnClickListener{view : View ->
+            view.findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)}
+        return view
     }
 
 }
