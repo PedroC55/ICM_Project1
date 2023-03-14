@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <TableRow
+        android:background="@color/blue"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:text="Near By Events"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow
+        android:background="@color/light_blue">
+
+        <TextView
+            android:layout_width="126dp"
+            android:gravity="center"
+            android:padding="20sp"
+            android:text="Event"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="Date"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="Location"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Sunset"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="25/03"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="Praia da Barra"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Live Concert"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:text="28/03"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:text="Fotossíntese"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Ping Pong Tournament"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:text="31/03"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:text="Multiusos"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="20sp"
+            android:text="Arraial"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="20sp"
+            android:text="01/04"
+            android:textSize="20sp" />
+        <TextView
+            android:text="Parque de\nEstacionamento"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="Regata"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp"
+            android:layout_weight="1"/>
+        <TextView
+            android:text="05/04"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="Ria de Aveiro"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+</TableLayout>

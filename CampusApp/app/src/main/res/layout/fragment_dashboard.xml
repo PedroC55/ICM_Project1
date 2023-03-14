@@ -25,6 +25,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="35dp"
+        android:background="#FF9800"
         android:contentDescription="@string/courses"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,13 +33,14 @@
         app:layout_constraintStart_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/online_course" />
 
     <ImageButton
         android:id="@+id/imageView11"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
+        android:background="#ADFF4E"
         android:contentDescription="@string/classroom_search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.7"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/school" />
 
     <TextView
         android:id="@+id/textView3"
@@ -124,6 +126,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="10dp"
+        android:background="#FFEB3B"
         android:contentDescription="@string/schedule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +134,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/schedule" />
 
     <TextView
         android:id="@+id/textView7"

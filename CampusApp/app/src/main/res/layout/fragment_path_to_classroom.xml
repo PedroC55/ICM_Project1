@@ -38,7 +38,7 @@
         android:layout_height="67dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="100dp"
-        android:autofillHints="Where are you going?"
+        android:autofillHints="Where are\n you going?"
         android:inputType="text"
         android:text="@string/where_are_you_going"
         android:textSize="20sp"

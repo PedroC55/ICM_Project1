@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <TableRow
+        android:background="@color/blue"
+        >
+
+        <TextView
+            android:text="Semester Courses"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow
+        android:background="@color/light_blue">
+        <TextView
+            android:text="Course Name"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="Attendance"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Course 1"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="5/5"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Course 2"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="7/8"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Course 3"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="2/4"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="Course 4"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="5/5"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="Course 5"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+        <TextView
+            android:text="4/5"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="20sp" />
+    </TableRow>
+</TableLayout>
