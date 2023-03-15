@@ -19,7 +19,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textView10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/user"
+        />
 
     <TextView
         android:id="@+id/textView9"
