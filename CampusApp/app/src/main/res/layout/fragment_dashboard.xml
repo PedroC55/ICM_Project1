@@ -27,14 +27,13 @@
         android:layout_marginStart="35dp"
         android:background="#FFEB3B"
         android:contentDescription="@string/book_classroom"
+        android:src="@drawable/teaching"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277"
-        android:src="@drawable/teaching"
-        />
+        app:layout_constraintVertical_bias="0.277" />
 
     <TextView
         android:id="@+id/textView3"
@@ -71,13 +70,13 @@
         android:layout_marginStart="35dp"
         android:background="#ADFF4E"
         android:contentDescription="@string/events"
+        android:src="@drawable/event"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277"
-        android:src="@drawable/event" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <TextView
         android:id="@+id/textView5"
@@ -112,16 +111,15 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
+        android:background="#ADFF4E"
         android:contentDescription="@string/classroom_search"
+        android:src="@drawable/school"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7"
-        android:src="@drawable/school"
-        android:background="#ADFF4E"
-         />
+        app:layout_constraintVertical_bias="0.7" />
 
     <ImageButton
         android:id="@+id/imageView7"
@@ -129,13 +127,13 @@
         android:layout_height="100dp"
         android:background="#FF9800"
         android:contentDescription="@string/classroom_search"
+        android:src="@drawable/search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.278"
-        android:src="@drawable/search" />
+        app:layout_constraintVertical_bias="0.278" />
 
     <ImageButton
         android:id="@+id/imageView10"
@@ -143,16 +141,15 @@
         android:layout_height="100dp"
         android:layout_marginStart="35dp"
         android:layout_marginEnd="10dp"
+        android:background="#FFEB3B"
         android:contentDescription="@string/schedule"
+        android:src="@drawable/schedule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        android:background="#FFEB3B"
-        android:src="@drawable/schedule"
-        />
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/textView4"
@@ -175,29 +172,28 @@
         android:layout_marginStart="10dp"
         android:background="#ADFF4E"
         android:contentDescription="@string/campus_map"
+        android:src="@drawable/map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        android:src="@drawable/map" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <ImageButton
         android:id="@+id/imageView9"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="35dp"
+        android:background="#FF9800"
         android:contentDescription="@string/courses"
+        android:src="@drawable/online_course"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        android:src="@drawable/online_course"
-        android:background="#FF9800"
-        />
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/textView7"
