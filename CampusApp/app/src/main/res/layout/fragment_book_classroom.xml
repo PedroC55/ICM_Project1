@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"
         android:autofillHints="Where are you going?"
         android:inputType="text"
-        android:text="@string/what_classroom_are_you_looking_for"
+        android:hint="@string/what_classroom_are_you_looking_for"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.095"
