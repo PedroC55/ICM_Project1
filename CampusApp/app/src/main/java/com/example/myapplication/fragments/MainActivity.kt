@@ -1,10 +1,10 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
+import com.example.myapplication.R
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_home -> makeCurrentFragment(DashboardFragment)
                 R.id.ic_classroom -> makeCurrentFragment(ClassroomScheduleFragment)
                 R.id.ic_location -> makeCurrentFragment(MapFragment)
-                R.id.ic_social-> makeCurrentFragment(NearByEventsFragment)
+                R.id.ic_social -> makeCurrentFragment(NearByEventsFragment)
             }
             true
         }

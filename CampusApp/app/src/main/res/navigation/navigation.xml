@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.myapplication.LoginFragment"
+        android:name="com.example.myapplication.fragments.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/login">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.myapplication.DashboardFragment"
+        android:name="com.example.myapplication.fragments.DashboardFragment"
         android:label="DashboardFragment"
         tools:layout="@layout/fragment_dashboard">
         <action
@@ -46,42 +46,42 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.myapplication.ProfileFragment"
+        android:name="com.example.myapplication.fragments.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.example.myapplication.MapFragment"
+        android:name="com.example.myapplication.fragments.MapFragment"
         android:label="MapFragment"
         tools:layout="@layout/fragment_map"/>
     <fragment
         android:id="@+id/coursesBeingTakenFragment"
-        android:name="com.example.myapplication.CoursesBeingTakenFragment"
+        android:name="com.example.myapplication.fragments.CoursesBeingTakenFragment"
         android:label="CoursesBeingTakenFragment"
         tools:layout="@layout/fragment_courses"/>
     <fragment
         android:id="@+id/scheduleFragment"
-        android:name="com.example.myapplication.ScheduleFragment"
+        android:name="com.example.myapplication.fragments.ScheduleFragment"
         android:label="ScheduleFragment"
         tools:layout="@layout/fragment_schedule"/>
     <fragment
         android:id="@+id/nearByEventsFragment"
-        android:name="com.example.myapplication.NearByEventsFragment"
+        android:name="com.example.myapplication.fragments.NearByEventsFragment"
         android:label="NearByEventsFragment"
         tools:layout="@layout/fragment_events"/>
     <fragment
         android:id="@+id/pathToClassroomFragment"
-        android:name="com.example.myapplication.PathToClassroomFragment"
+        android:name="com.example.myapplication.fragments.PathToClassroomFragment"
         android:label="PathToClassroomFragment"
         tools:layout="@layout/fragment_path_to_classroom"/>
     <fragment
         android:id="@+id/findCampusFragment"
-        android:name="com.example.myapplication.FindCampusFragment"
+        android:name="com.example.myapplication.fragments.FindCampusFragment"
         android:label="FindCampusFragment"
         tools:layout="@layout/fragment_where_am_i"/>
     <fragment
         android:id="@+id/classroomScheduleFragment"
-        android:name="com.example.myapplication.ClassroomScheduleFragment"
+        android:name="com.example.myapplication.fragments.ClassroomScheduleFragment"
         android:label="ClassroomScheduleFragment"
         tools:layout="@layout/fragment_book_classroom"/>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.classes
 
 class ScheduleClassroom {
     var id : Int = 0

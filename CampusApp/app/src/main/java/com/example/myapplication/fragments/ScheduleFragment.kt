@@ -1,13 +1,14 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.R
 
 
-class ClassroomScheduleFragment : Fragment(R.layout.fragment_book_classroom) {
+class ScheduleFragment : Fragment(R.layout.fragment_schedule) {
 
 
     override fun onCreateView(
@@ -15,7 +16,7 @@ class ClassroomScheduleFragment : Fragment(R.layout.fragment_book_classroom) {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book_classroom, container, false)
+        return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
 
 }
