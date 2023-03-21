@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import android.widget.ImageButton
+import androidx.cardview.widget.CardView
 
 import androidx.navigation.findNavController
 import com.example.myapplication.R
@@ -21,6 +22,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        requireActivity().findViewById<CardView>(R.id.cardView).visibility = View.GONE
+        /*
         val button_profile: ImageButton = view.findViewById(R.id.profile_button)
         val button_where: ImageButton = view.findViewById(R.id.imageView7)
         val button_book_class: ImageButton = view.findViewById(R.id.imageView)
@@ -53,7 +56,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
         button_classroom_search.setOnClickListener{view : View ->
             view.findNavController().navigate(R.id.action_dashboardFragment_to_pathToClassroomFragment)}
-
+        */
 
         return view
     }

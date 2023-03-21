@@ -4,15 +4,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.classes.RecyclerViewAdapter
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private var adapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>? = null
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
         hideBottomNavigationView()
 
@@ -21,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         val NearByEventsFragment = NearByEventsFragment()
         val ClassroomScheduleFragment = ClassroomScheduleFragment()
 
+        layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+
+
+        adapter = RecyclerViewAdapter()
+        recyclerView.adapter = adapter
 
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
