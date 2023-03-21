@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
+@Suppress("DEPRECATION")
 class LoginFragment : Fragment(R.layout.login) {
 
 
@@ -24,10 +26,15 @@ class LoginFragment : Fragment(R.layout.login) {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.login, container, false)
         val button: Button = view.findViewById(R.id.button_login)
-
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
         button.setOnClickListener{view : View ->
             view.findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)}
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
     }
 
 }

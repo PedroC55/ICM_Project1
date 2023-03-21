@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-
+import androidx.navigation.fragment.NavHostFragment
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,11 +14,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        if(supportFragmentManager.findFragmentById(R.id.myNavHostFragment)){
-            bottomNavigationView.visibility = View.GONE
-        }
+        hideBottomNavigationView()
 
-        //val LoginFragment = LoginFragment()
         val DashboardFragment = DashboardFragment()
         val MapFragment = MapFragment()
         val NearByEventsFragment = NearByEventsFragment()
@@ -44,4 +41,24 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.ll_wrapper, fragment)
             commit()
         }
+
+    private fun hideBottomNavigationView() {
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        hideBottomNavigationView()
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        showBottomNavigationView()
+    }
+
+    private fun showBottomNavigationView() {
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
+    }
 }
