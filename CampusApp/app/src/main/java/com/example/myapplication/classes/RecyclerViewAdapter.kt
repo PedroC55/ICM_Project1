@@ -39,7 +39,7 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_dashboard, parent, false)
+            .inflate(R.layout.default_card, parent, false)
         return ViewHolder(v)
     }
 
