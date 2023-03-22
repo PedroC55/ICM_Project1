@@ -1,10 +1,17 @@
 package com.example.myapplication.fragments
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.classes.Events
+import com.example.myapplication.database.DatabaseInfo
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -14,13 +21,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        hideBottomNavigationView()
-
+        val context = this
+        DatabaseInfo(context, null)
+        Toast.makeText(context, "${context.getDatabasePath(DatabaseInfo.DATABASE_NAME)}", Toast.LENGTH_LONG).show()
+        Log.d("VeryGood", "${context.getDatabasePath(DatabaseInfo.DATABASE_NAME)}")
         val DashboardFragment = DashboardFragment()
         val MapFragment = MapFragment()
         val NearByEventsFragment = NearByEventsFragment()
         val ClassroomScheduleFragment = ClassroomScheduleFragment()
-
 
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
@@ -36,29 +44,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun makeCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.ll_wrapper, fragment)
             commit()
         }
-
-    private fun hideBottomNavigationView() {
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        hideBottomNavigationView()
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        showBottomNavigationView()
-    }
-
-    private fun showBottomNavigationView() {
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
-    }
 }
