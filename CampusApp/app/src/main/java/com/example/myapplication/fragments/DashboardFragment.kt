@@ -22,7 +22,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        requireActivity().findViewById<CardView>(R.id.cardView).visibility = View.GONE
+        requireActivity().findViewById<CardView>(R.id.cardView).visibility = View.VISIBLE
         /*
         val button_profile: ImageButton = view.findViewById(R.id.profile_button)
         val button_where: ImageButton = view.findViewById(R.id.imageView7)
