@@ -1,91 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
 
-    <!-- Edit text to enter name -->
-    <EditText
-        android:id="@+id/enterName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Name"
-        android:textSize="22sp"
-        android:layout_margin="20sp"/>
-
-    <!-- Edit text to enter age -->
-    <EditText
-        android:id="@+id/enterLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:textSize="22sp"
-        android:hint="Age"/>
-
-    <EditText
-        android:id="@+id/enterTag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:textSize="22sp"
-        android:hint="Enter Tag"/>
-
-    <EditText
-        android:id="@+id/enterNP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:textSize="22sp"
-        android:hint="Enter NP"/>
-
-    <EditText
-        android:id="@+id/enterHours"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:textSize="22sp"
-        android:hint="Enter Hours"/>
-
-    <EditText
-        android:id="@+id/enterDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20sp"
-        android:textSize="22sp"
-        android:hint="Enter Description"/>
-
-
-    <!-- Button to add Name -->
-    <Button
-        android:id="@+id/addEvent"
-        android:layout_width="150sp"
-        android:layout_gravity="center"
-        android:text="Add Name"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"/>
-
-    <!-- Button to print Name -->
-    <Button
-        android:id="@+id/printName"
-        android:layout_width="150sp"
-        android:layout_gravity="center"
-        android:text="Print Name"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"/>
-
-    <LinearLayout
+<!--    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Text view to get all name -->
+        &lt;!&ndash; Text view to get all name &ndash;&gt;
         <TextView
             android:id="@+id/Name"
             android:textAlignment="center"
@@ -98,6 +17,110 @@
             android:padding="10sp"
             android:textColor="#000000"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
-</LinearLayout>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <!-- Edit text to enter name -->
+    <EditText
+        android:id="@+id/enterName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"
+        android:textSize="22sp"
+        android:layout_margin="20sp"/>
+
+    <!-- Edit text to enter age -->
+    <EditText
+        android:id="@+id/enterAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:hint="Enter Age"/>
+
+    <EditText
+        android:id="@+id/enterEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:hint="Enter Email"/>
+
+    <EditText
+        android:id="@+id/enterPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:inputType="textPassword"
+        android:hint="Enter Password"/>
+
+    <EditText
+        android:id="@+id/enterNMec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:hint="Enter nMec"/>
+
+    <EditText
+        android:id="@+id/enterPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:hint="Enter Phone Number"/>
+
+    <EditText
+        android:id="@+id/enterNif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:hint="Enter NIF"/>
+
+    <EditText
+        android:id="@+id/enterNationality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:textSize="22sp"
+        android:hint="Enter Nationality"/>
+
+
+    <!-- Button to add Name -->
+    <Button
+        android:id="@+id/addUser"
+        android:layout_width="150sp"
+        android:layout_gravity="center"
+        android:text="Register"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"/>
+
+    <!-- Button to print Name -->
+    <!--<Button
+        android:id="@+id/printName"
+        android:layout_width="150sp"
+        android:layout_gravity="center"
+        android:text="Print Name"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"/>-->
+
+    </LinearLayout>
+</ScrollView>
+

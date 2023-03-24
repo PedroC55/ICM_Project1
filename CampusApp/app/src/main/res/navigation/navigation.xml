@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/dashboardFragment"
@@ -84,4 +87,8 @@
         android:name="com.example.myapplication.fragments.ClassroomScheduleFragment"
         android:label="ClassroomScheduleFragment"
         tools:layout="@layout/fragment_book_classroom"/>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.myapplication.fragments.RegisterFragment"
+        android:label="RegisterFragment" />
 </navigation>

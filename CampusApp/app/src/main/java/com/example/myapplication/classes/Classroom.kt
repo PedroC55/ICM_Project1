@@ -6,6 +6,7 @@ class Classroom {
     private var location : String = ""
     //schedule
     //qrcode
+    //cena de ler o textinho
 
     constructor(roomNumber : String = "", location : String = ""){
         this.roomNumber = roomNumber

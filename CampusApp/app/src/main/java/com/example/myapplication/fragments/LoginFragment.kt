@@ -22,10 +22,13 @@ class LoginFragment : Fragment(R.layout.login) {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.login, container, false)
-        val button: Button = view.findViewById(R.id.button_login)
+        val button1: Button = view.findViewById(R.id.button_login)
+        val button2: Button = view.findViewById(R.id.button_register)
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
-        button.setOnClickListener{view : View ->
+        button1.setOnClickListener{view : View ->
             view.findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)}
+        button2.setOnClickListener{view : View ->
+            view.findNavController().navigate(R.id.action_loginFragment_to_registerFragment)}
         return view
     }
 

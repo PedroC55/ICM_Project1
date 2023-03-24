@@ -31,8 +31,6 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val context = this
         DatabaseInfo(context, null)
-        Toast.makeText(context, "${context.getDatabasePath(DatabaseInfo.DATABASE_NAME)}", Toast.LENGTH_LONG).show()
-        Log.d("VeryGood", "${context.getDatabasePath(DatabaseInfo.DATABASE_NAME)}")
         val DashboardFragment = DashboardFragment()
         val MapFragment = MapFragment()
         val NearByEventsFragment = NearByEventsFragment()
