@@ -37,10 +37,9 @@ class RegisterFragment : Fragment() {
         val h : EditText = view.findViewById(R.id.enterNationality)
         val btn : Button = view.findViewById(R.id.addUser)
         btn.setOnClickListener{
-            Log.d("UIIIIIIIIIIIIIIIIIIII", c.toString())
-            if(checkData(a,b,c,d,e,f,g,h)>0){
+            if(checkData(a,b,c,d,e,f,g,h)==0){
                 val db = DatabaseInfo(requireContext(),null)
-
+                Log.d("ENTREI", "YEAH")
                 val name = a.text.toString()
                 val age = b.text.toString().toInt()
                 val email = c.text.toString()
@@ -54,12 +53,13 @@ class RegisterFragment : Fragment() {
                 // user to our database
                 val user = User(name, age, email, password, nMec, phoneNumber, nif, nationality)
                 db.insertUsersData(user)
+                db.close()
                 view.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }
+
         return view
     }
-
     override fun onPause() {
         super.onPause()
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE

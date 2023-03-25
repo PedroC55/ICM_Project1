@@ -1,24 +1,15 @@
 package com.example.myapplication.database
 
+import android.R.id
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
-import android.util.Log
-import android.widget.Toast
 import com.example.myapplication.classes.Events
 import com.example.myapplication.classes.User
-import com.example.myapplication.database.DatabaseInfo.TableEvents.COL_DESCRIPTION
-import com.example.myapplication.database.DatabaseInfo.TableEvents.COL_HOURS
-import com.example.myapplication.database.DatabaseInfo.TableEvents.COL_LOCATION
-import com.example.myapplication.database.DatabaseInfo.TableEvents.COL_NAME
-import com.example.myapplication.database.DatabaseInfo.TableEvents.COL_NUMBEROFPERSONS
-import com.example.myapplication.database.DatabaseInfo.TableEvents.COL_TAG
-import com.example.myapplication.database.DatabaseInfo.TableEvents.TABLE_NAME
-import com.example.myapplication.database.DatabaseInfo.TableUser.COL_NAME
-import com.example.myapplication.database.DatabaseInfo.TableUser.TABLE_NAME
+
 
 class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLiteOpenHelper (context, DATABASE_NAME, factory, 2){
     companion object{
@@ -140,7 +131,6 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         p0.execSQL(SQL_CREATE_TABLE_CSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_SSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_FRIENDS_QUERY)
-        Log.d("UIIIIIIIIIIIIIIIIIII", "UUUUUUUUUIIIIIIIIIIIIIIWI")
     }
 
     override fun onUpgrade(p0: SQLiteDatabase, p1: Int, p2: Int) {
@@ -176,6 +166,12 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         db.close()
     }
 
+    fun getUserByEmail(email: String):Cursor{
+        val db = this.readableDatabase
+        val user = db.rawQuery("SELECT * FROM users WHERE email='$email';", null)
+
+        return user
+    }
 /*    fun getName(): Cursor {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
