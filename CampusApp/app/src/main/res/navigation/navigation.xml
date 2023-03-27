@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_classroomScheduleFragment"
             app:destination="@id/classroomScheduleFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -94,5 +97,13 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.example.myapplication.fragments.AddEventFragment"
+        android:label="AddEventFragment" >
+        <action
+            android:id="@+id/action_addEventFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
 </navigation>

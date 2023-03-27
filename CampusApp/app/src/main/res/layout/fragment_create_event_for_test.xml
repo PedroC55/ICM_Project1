@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <!-- Edit text to enter name -->
     <EditText
@@ -26,13 +25,17 @@
         android:textSize="22sp"
         android:hint="Enter Location"/>
 
-    <EditText
-        android:id="@+id/enterTag"
+    <Spinner
+        style="?android:attr/spinnerItemStyle"
+        android:id="@+id/chooseTagSpinner"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:textSize="22sp"
-        android:hint="Enter Tag"/>
+        android:contentDescription="Choose Tag"
+        android:text="Choose Tag"
+        android:minHeight="48dp"
+        android:textSize="22sp" />
 
     <EditText
         android:id="@+id/enterNP"
@@ -40,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
         android:textSize="22sp"
-        android:hint="Enter NP"/>
+        android:hint="Enter Number of People to Attend"/>
 
     <EditText
         android:id="@+id/enterHours"
@@ -48,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
         android:textSize="22sp"
-        android:hint="Enter Hours"/>
+        android:hint="Enter Day and Hours"/>
 
     <EditText
         android:id="@+id/enterDescription"
@@ -64,40 +67,10 @@
         android:id="@+id/addEvent"
         android:layout_width="150sp"
         android:layout_gravity="center"
-        android:text="Add Name"
+        android:text="Add Event"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"/>
-
-    <!-- Button to print Name -->
-    <Button
-        android:id="@+id/printName"
-        android:layout_width="150sp"
-        android:layout_gravity="center"
-        android:text="Print Name"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!-- Text view to get all name -->
-        <TextView
-            android:id="@+id/Name"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20sp"
-            android:text="Name\n\n"
-            android:textSize="22sp"
-            android:padding="10sp"
-            android:textColor="#000000"/>
-
-    </LinearLayout>
 
 </LinearLayout>

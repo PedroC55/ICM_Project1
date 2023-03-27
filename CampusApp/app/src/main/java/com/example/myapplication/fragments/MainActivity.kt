@@ -18,6 +18,8 @@ import com.example.myapplication.classes.RecyclerViewAdapter
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 class MainActivity : AppCompatActivity() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        findViewById<FloatingActionButton>(R.id.fab).visibility = View.GONE
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val context = this

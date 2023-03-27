@@ -8,9 +8,13 @@ import android.view.ViewGroup
 
 import android.widget.ImageButton
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
@@ -23,6 +27,12 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
         requireActivity().findViewById<CardView>(R.id.cardView).visibility = View.VISIBLE
+        requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility=View.VISIBLE
+        val fab : FloatingActionButton = requireActivity().findViewById(R.id.fab)
+        fab.visibility = View.VISIBLE
+        fab.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_dashboardFragment_to_addEventFragment)
+        }
         /*
         val button_profile: ImageButton = view.findViewById(R.id.profile_button)
         val button_where: ImageButton = view.findViewById(R.id.imageView7)
@@ -59,6 +69,11 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         */
 
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireActivity().findViewById<FloatingActionButton>(R.id.fab).visibility = View.GONE
     }
 
 }

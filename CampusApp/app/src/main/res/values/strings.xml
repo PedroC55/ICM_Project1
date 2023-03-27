@@ -34,4 +34,13 @@
     <string name="schedule2">Classroom schedule</string>
     <string name="what_classroom_are_you_looking_for">Classroom Schedule</string>
     <string name="register">Register</string>
+    <string name="eventSubmit">Submit Event</string>
+    <string-array name="tags">
+        <item>Beach</item>
+        <item>Cinema</item>
+        <item>Party</item>
+        <item>Sports</item>
+        <item>Game Night</item>
+        <item>Concert</item>
+    </string-array>
 </resources>
