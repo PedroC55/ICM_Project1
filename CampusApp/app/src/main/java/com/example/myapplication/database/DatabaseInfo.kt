@@ -172,6 +172,13 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
 
         return user
     }
+
+    fun getEvents():Cursor{
+        val db = this.readableDatabase
+        val events = db.rawQuery("SELECT * FROM events", null)
+        return events
+
+    }
 /*    fun getName(): Cursor {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null)

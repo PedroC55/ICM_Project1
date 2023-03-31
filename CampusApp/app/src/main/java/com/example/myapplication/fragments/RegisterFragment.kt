@@ -72,45 +72,48 @@ class RegisterFragment : Fragment() {
     }
 
     private fun checkData(a:EditText, b:EditText, c:EditText, d:EditText, e:EditText, f:EditText, g:EditText, h:EditText): Int{
-        val ret = 0
+        var ret = 0
         if(isEmpty(a)){
             a.error = "please enter name!"
-            ret+1
+            ret += 1
         }
         if(isEmpty(b)){
             b.error = "please enter age!"
-            ret+1
+            ret += 1
         }
         if(isEmpty(c)){
             c.error = "please enter email!"
-            ret+1
+            ret += 1
         }
         if(isEmpty(d)){
             d.error = "please enter password!"
-            ret+1
+            ret += 1
         }
         if(isEmpty(e)){
             e.error = "please enter nMec!"
-            ret+1
+            ret += 1
         }
         if(isEmpty(f)){
             f.error = "please enter phone number!"
-            ret+1
+            ret += 1
         }
         if(isEmpty(g)){
             g.error = "please enter nif!"
-            ret+1
+            ret += 1
         }
         if(isEmpty(h)){
             h.error = "please enter nationality!"
-            ret+1
+            ret += 1
         }
         if(d.text.toString().length<8){
             d.error = "Password must have more than 8 characters"
+            ret += 1
         }
         if("@ua.pt" !in c.text.toString()){
             c.error = "Email must be from ua organization"
+            ret += 1
         }
+        Log.d("RetValue", ret.toString())
         return ret
     }
 }

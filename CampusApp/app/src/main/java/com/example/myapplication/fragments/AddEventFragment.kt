@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.classes.Events
+import com.example.myapplication.classes.RecyclerViewAdapter
 import com.example.myapplication.database.DatabaseInfo
 
 class AddEventFragment : Fragment(R.layout.fragment_create_event_for_test) {

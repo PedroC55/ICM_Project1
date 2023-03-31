@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardView2"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="3dp"
-    android:layout_margin="15dp"
-    android:foreground="?selectableItemBackground"
-    android:clickable="true"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        android:layout_margin="15dp"
+        android:foreground="?selectableItemBackground"
+        android:clickable="true"
 
-    android:background="#2196F3">
+        android:background="#2196F3">
 
 
 
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+</ScrollView>

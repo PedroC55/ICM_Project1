@@ -5,15 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 
-import android.widget.ImageButton
 import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.classes.RecyclerViewAdapter
+import com.example.myapplication.database.DatabaseInfo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -26,13 +26,16 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        requireActivity().findViewById<CardView>(R.id.cardView).visibility = View.VISIBLE
         requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility=View.VISIBLE
+        requireActivity().findViewById<CardView>(R.id.cardView).visibility = View.VISIBLE
         val fab : FloatingActionButton = requireActivity().findViewById(R.id.fab)
         fab.visibility = View.VISIBLE
         fab.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_dashboardFragment_to_addEventFragment)
         }
+
+
+
         /*
         val button_profile: ImageButton = view.findViewById(R.id.profile_button)
         val button_where: ImageButton = view.findViewById(R.id.imageView7)
@@ -71,9 +74,36 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         return view
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        /*val db = DatabaseInfo(requireContext(), null)
+        val c = db.getEvents()
+        c.moveToFirst()
+        val rva = RecyclerViewAdapter()
+        while(c.moveToNext()){
+            if(!rva.itemTitles.contains(c.getString(1))){
+                rva.itemTitles= rva.itemTitles.plus(c.getString(1))
+                rva.itemDescription=rva.itemDescription.plus(c.getString(5))
+                when(tag){
+                    "Beach" -> rva.itemImages=rva.itemImages.plus(R.drawable.praia)
+                    "Cinema" -> rva.itemImages=rva.itemImages.plus(R.drawable.cinema)
+                    "Party" -> rva.itemImages=rva.itemImages.plus(R.drawable.festa)
+                    "Sports" -> rva.itemImages=rva.itemImages.plus(R.drawable.desporto1)
+                    "Game Night" -> rva.itemImages=rva.itemImages.plus(R.drawable.gamenightlogocolor)
+                    "Concert" -> rva.itemImages=rva.itemImages.plus(R.drawable.concerto)
+                }
+            }
+        }
+        rva.notifyDataSetChanged()
+        requireActivity().findViewById<RecyclerView>(R.id.recyclerView).adapter = rva*/
+    }
+
     override fun onPause() {
         super.onPause()
         requireActivity().findViewById<FloatingActionButton>(R.id.fab).visibility = View.GONE
     }
+
+
 
 }
