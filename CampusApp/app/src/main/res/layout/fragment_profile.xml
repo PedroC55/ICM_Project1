@@ -81,9 +81,19 @@
         <TableRow android:gravity="center_horizontal">
 
             <TextView
+                android:id="@+id/age"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:padding="20sp"
-                android:text="@string/doc_identifica_o"
+                android:text="@string/age"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="@string/email"
                 android:textSize="13sp" />
 
         </TableRow>
@@ -91,6 +101,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/nMec"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="20sp"
@@ -98,6 +109,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/phoneNumber"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="20sp"
@@ -109,6 +121,7 @@
         <TableRow>
 
             <TextView
+                android:id="@+id/nif"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="20sp"
@@ -116,6 +129,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/nationality"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="20sp"

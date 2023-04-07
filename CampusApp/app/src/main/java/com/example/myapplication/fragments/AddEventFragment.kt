@@ -12,6 +12,10 @@ import com.example.myapplication.R
 import com.example.myapplication.classes.Events
 import com.example.myapplication.classes.RecyclerViewAdapter
 import com.example.myapplication.database.DatabaseInfo
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.type.DateTime
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class AddEventFragment : Fragment(R.layout.fragment_create_event_for_test) {
     override fun onCreateView(
@@ -20,6 +24,7 @@ class AddEventFragment : Fragment(R.layout.fragment_create_event_for_test) {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_create_event_for_test, container, false)
         requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility = View.GONE
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
         val spinner: Spinner = view.findViewById(R.id.chooseTagSpinner)
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -34,6 +39,7 @@ class AddEventFragment : Fragment(R.layout.fragment_create_event_for_test) {
         val btn : Button = view.findViewById(R.id.addEvent)
         btn.setOnClickListener {
             val db = DatabaseInfo(requireContext(), null)
+            var rva = requireActivity().findViewById<RecyclerView>(R.id.recyclerView).adapter as RecyclerViewAdapter
 
             // creating variables for values
             // in name and age edit texts
@@ -42,7 +48,6 @@ class AddEventFragment : Fragment(R.layout.fragment_create_event_for_test) {
             val b :EditText = view.findViewById(R.id.enterLocation)
             val location = b.text.toString()
             val c : EditText = view.findViewById(R.id.enterHours)
-            val hours = c.text.toString()
             val d : EditText = view.findViewById(R.id.enterNP)
             val np = d.text.toString().toInt()
             val tag = spinner.selectedItem.toString()
@@ -50,11 +55,32 @@ class AddEventFragment : Fragment(R.layout.fragment_create_event_for_test) {
             val description = e.text.toString()
             // calling method to add
             // name to our database
-            val ev: Events = Events(name, location, hours, np, description, tag)
-            db.insertEventsData(ev)
-            view.findNavController().navigate(R.id.action_addEventFragment_to_dashboardFragment)
+            if(isValidDate(c.text.toString())){
+                val hours = c.text.toString()
+                val ev: Events = Events(name, location, hours, np, description, tag, rva.getCurrentUser())
+                db.insertEventsData(ev)
+                view.findNavController().navigate(R.id.action_addEventFragment_to_dashboardFragment)
+            }else{
+                c.error = "Date not Valid! (hh:mm dd/MM/yyyy)"
+            }
         }
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
+
+    }
+
+    private fun isValidDate(date: String): Boolean{
+        val dt = SimpleDateFormat("HH:mm dd/MM/yyyy")
+        try {
+            dt.parse(date)
+            return true
+        }catch (e:java.lang.Exception){
+            return false
+        }
     }
 }
 

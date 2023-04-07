@@ -9,8 +9,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.myapplication.R
 import com.example.myapplication.classes.Events
 import com.example.myapplication.database.DatabaseInfo
@@ -30,17 +39,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<FloatingActionButton>(R.id.fab).visibility = View.GONE
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        val context = this
-        DatabaseInfo(context, null)
-        val DashboardFragment = DashboardFragment()
-        val MapFragment = MapFragment()
-        val NearByEventsFragment = NearByEventsFragment()
-        val ClassroomScheduleFragment = ClassroomScheduleFragment()
         layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         adapter = RecyclerViewAdapter()
         recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(DividerItemDecoration(this, VERTICAL))
+
+        val context = this
+        DatabaseInfo(context, null)
+
+
+        val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        val DashboardFragment = DashboardFragment()
+        val MapFragment = MapFragment()
+        val NearByEventsFragment = NearByEventsFragment()
+        val ClassroomScheduleFragment = ClassroomScheduleFragment()
+
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_home -> makeCurrentFragment(DashboardFragment)
@@ -50,9 +64,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
-
-
     }
 
 

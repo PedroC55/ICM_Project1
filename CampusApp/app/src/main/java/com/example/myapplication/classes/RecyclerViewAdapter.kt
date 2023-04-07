@@ -1,5 +1,7 @@
 package com.example.myapplication.classes
 
+import android.app.Activity
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,18 +9,25 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.database.DatabaseInfo
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.example.myapplication.fragments.MainActivity
+import kotlin.properties.Delegates
+
 
 class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
-    var itemTitles = arrayOf("Let's go to the cinema!")
+    var itemTitles = arrayOf("Porcos!")
     var itemDescription = arrayOf("A trip to the cinema is an entertaining and immersive experience to watch movies on the big screen.")
     var itemImages = intArrayOf(
-        R.drawable.cinema
+        com.example.myapplication.R.drawable.cinema
     )
+
+    lateinit var navCo : NavController
+    var itemid : Int = -1
 /*    var itemTitles = emptyArray<String>()
     var itemDescription = emptyArray<String>()
     var itemImages = emptyArray<Int>()*/
@@ -28,9 +37,9 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
         var textTitle : TextView
         var textDescription : TextView
         init {
-            image = itemView.findViewById(R.id.item_image)
-            textTitle = itemView.findViewById(R.id.item_title)
-            textDescription = itemView.findViewById(R.id.item_description)
+            image = itemView.findViewById(com.example.myapplication.R.id.item_image)
+            textTitle = itemView.findViewById(com.example.myapplication.R.id.item_title)
+            textDescription = itemView.findViewById(com.example.myapplication.R.id.item_description)
 
         }
 
@@ -40,27 +49,61 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
         val db = DatabaseInfo(parent.context, null)
         val c = db.getEvents()
         c.moveToFirst()
-        //val rva = RecyclerViewAdapter()
         while(c.moveToNext()){
             Log.d("aaaaaaaaaaaaaaaa", c.getString(1))
             if(!itemTitles.contains(c.getString(1))){
                 itemTitles= itemTitles.plus(c.getString(1))
                 itemDescription=itemDescription.plus(c.getString(5))
                 when(c.getString(6)){
-                    "Beach" -> itemImages=itemImages.plus(R.drawable.praia)
-                    "Cinema" -> itemImages=itemImages.plus(R.drawable.cinema)
-                    "Party" -> itemImages=itemImages.plus(R.drawable.festa)
-                    "Sports" -> itemImages=itemImages.plus(R.drawable.desporto1)
-                    "Game Night" -> itemImages=itemImages.plus(R.drawable.gamenightlogocolor)
-                    "Concert" -> itemImages=itemImages.plus(R.drawable.concerto)
+                    "Beach" -> itemImages=itemImages.plus(com.example.myapplication.R.drawable.praia)
+                    "Cinema" -> itemImages=itemImages.plus(com.example.myapplication.R.drawable.cinema)
+                    "Party" -> itemImages=itemImages.plus(com.example.myapplication.R.drawable.festa)
+                    "Sports" -> itemImages=itemImages.plus(com.example.myapplication.R.drawable.desporto1)
+                    "Game Night" -> itemImages=itemImages.plus(com.example.myapplication.R.drawable.gamenightlogocolor)
+                    "Concert" -> itemImages=itemImages.plus(com.example.myapplication.R.drawable.concerto)
                 }
             }
         }
         /*rva.notifyDataSetChanged()
         requireActivity().findViewById<RecyclerView>(R.id.recyclerView).adapter = rva*/
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.default_card, parent, false)
+            .inflate(com.example.myapplication.R.layout.default_card, parent, false)
         return ViewHolder(v)
+    }
+
+    fun setNav (nav : NavController){
+        navCo = nav
+    }
+
+    fun getitemid(): Int{
+        return itemid+1
+    }
+
+    var u by Delegates.notNull<Int>()
+    var ts by Delegates.notNull<Int>()
+    var num by Delegates.notNull<Int>()
+
+    fun setProfile(n : Int){
+        num = n
+    }
+
+    fun getProfile():Int{
+        return num
+    }
+    fun setCurrentUser(user : Int){
+        u = user
+    }
+
+    fun getCurrentUser(): Int{
+        return u
+    }
+
+    fun setUserToSee(user : Int){
+        ts = user
+    }
+
+    fun getUserToSee(): Int{
+        return ts
     }
 
     override fun getItemCount(): Int {
@@ -68,12 +111,16 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textTitle.text = itemTitles[position+1]
-        holder.textDescription.text = itemDescription[position+1]
-        holder.image.setImageResource(itemImages[position+1])
+        holder.textTitle.text = itemTitles[position]
+        holder.textDescription.text = itemDescription[position]
+        holder.image.setImageResource(itemImages[position])
         holder.itemView.setOnClickListener { v: View ->
-            Toast.makeText(v.context, "Clicked on the item", Toast.LENGTH_SHORT).show()
+            Toast.makeText(v.context, "Clicked on the item: " + holder.textTitle.text.toString(), Toast.LENGTH_SHORT).show()
+            navCo.navigate(R.id.action_dashboardFragment_to_nearByEventsFragment)
+            itemid = position
         }
     }
+
+
 
 }

@@ -23,18 +23,29 @@
     <string name="doc_identifica_o"><b>Identification Num.</b> \n 1234567</string>
     <string name="number_doc">12345678</string>
     <string name="informa_es_pessoais">Personal Informations</string>
-    <string name="n_mec"><b>N_Mec</b> \n 123456 </string>
-    <string name="telem_vel"><b>Phone Number</b> \n 931111111</string>
+    <string name="n_mec"><b>N_Mec</b> \n%1$s</string>
+    <string name="telem_vel"><b>Phone Number</b> \n%1$s</string>
     <string name="profile">Profile</string>
     <string name="alberto_dos_reis">Alberto dos Reis</string>
-    <string name="nif"><b>NIF</b> \n 123456789</string>
-    <string name="localidade"><b>Nacionality</b> \n Portuguese</string>
+    <string name="nif"><b>NIF</b> \n%1$s</string>
+    <string name="localidade"><b>Nacionality</b> \n%1$s</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="wednesday">Wednesday</string>
     <string name="schedule2">Classroom schedule</string>
     <string name="what_classroom_are_you_looking_for">Classroom Schedule</string>
     <string name="register">Register</string>
     <string name="eventSubmit">Submit Event</string>
+    <string name="event">Event</string>
+    <string name="event_info">Event Informations</string>
+    <string name="preference_file_key">com.example.android.while_in_use_location.PREFERENCE_FILE_KEY</string>
+    <string name="event_name">Event_name</string>
+    <string name="location"><b>Location:</b>\n%1$s</string>
+    <string name="np"><b>People to Attend:</b>\n%1$s</string>
+    <string name="Hours_Date">Start Time:\n%1$s</string>
+    <string name="description">Description:\n%1$s</string>
+    <string name="creator">Created By:\n%1$s</string>
+    <string name="age">Age:\n%1$s</string>
+    <string name="email">Email:\n%1$s</string>
     <string-array name="tags">
         <item>Beach</item>
         <item>Cinema</item>

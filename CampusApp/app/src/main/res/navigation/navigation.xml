@@ -74,7 +74,11 @@
         android:id="@+id/nearByEventsFragment"
         android:name="com.example.myapplication.fragments.NearByEventsFragment"
         android:label="NearByEventsFragment"
-        tools:layout="@layout/fragment_events"/>
+        tools:layout="@layout/fragment_events">
+        <action
+            android:id="@+id/action_nearByEventsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pathToClassroomFragment"
         android:name="com.example.myapplication.fragments.PathToClassroomFragment"

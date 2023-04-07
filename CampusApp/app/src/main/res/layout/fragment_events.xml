@@ -1,149 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="1">
+    android:background="#2196F3">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TableRow
-        android:background="@color/blue"
-        android:gravity="center"
-        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="718dp">
 
-        <TextView
-            android:text="Near By Events"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="20sp" />
-    </TableRow>
 
-    <TableRow
-        android:background="@color/light_blue">
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="240dp"
+                android:layout_height="191dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/user"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-        <TextView
-            android:layout_width="126dp"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="Event"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-        <TextView
-            android:text="Date"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp" />
-        <TextView
-            android:text="Location"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp" />
-    </TableRow>
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="268dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/event"
+                android:textSize="40sp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TableRow>
-        <TextView
-            android:text="Sunset"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp"
-            android:layout_weight="1"/>
-        <TextView
-            android:text="25/03"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp" />
-        <TextView
-            android:text="Praia da Barra"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp" />
-    </TableRow>
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="324dp"
+                android:text="@string/event_name"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TableRow>
-        <TextView
-            android:text="Live Concert"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp"
-            android:layout_weight="1"/>
+            <TableLayout
+                android:id="@+id/tableForEvent"
+                android:layout_width="350dp"
+                android:layout_height="260dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="33dp"
+                android:background="#FAF9F9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent=".5">
 
-        <TextView
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="28/03"
-            android:textSize="20sp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#8BC34A">
 
-        <TextView
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="Fotossíntese"
-            android:textSize="20sp" />
-    </TableRow>
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="@string/event_info"
+                        android:textSize="13sp" />
 
-    <TableRow>
-        <TextView
-            android:text="Ping Pong Tournament"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp"
-            android:layout_weight="1"/>
+                </TableRow>
 
-        <TextView
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="31/03"
-            android:textSize="20sp" />
+                <TableRow android:gravity="center_horizontal">
 
-        <TextView
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="Multiusos"
-            android:textSize="20sp" />
-    </TableRow>
+                    <TextView
+                        android:id="@+id/location"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/location"
+                        android:textSize="13sp" />
 
-    <TableRow>
+                    <TextView
+                        android:id="@+id/creator"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/creator"
+                        android:textSize="13sp" />
+                </TableRow>
 
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="Arraial"
-            android:textSize="20sp" />
+                <TableRow>
 
-        <TextView
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:padding="20sp"
-            android:text="01/04"
-            android:textSize="20sp" />
-        <TextView
-            android:text="Parque de\nEstacionamento"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp" />
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:text="Regata"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp"
-            android:layout_weight="1"/>
-        <TextView
-            android:text="05/04"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp" />
-        <TextView
-            android:text="Ria de Aveiro"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:padding="20sp" />
-    </TableRow>
-</TableLayout>
+                    <TextView
+                        android:id="@+id/number_people"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/np"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/startTime"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/Hours_Date"
+                        android:textSize="13sp" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/description"
+                        android:textSize="13sp" />
+                </TableRow>
+
+            </TableLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

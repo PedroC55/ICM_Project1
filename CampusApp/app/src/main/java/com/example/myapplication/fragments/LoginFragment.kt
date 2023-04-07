@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.classes.RecyclerViewAdapter
 import com.example.myapplication.database.DatabaseInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -33,8 +34,8 @@ class LoginFragment : Fragment(R.layout.login) {
         val button2: Button = view.findViewById(R.id.button_register)
         val email : EditText = view.findViewById(R.id.editTextTextEmailAddress)
         val pass : EditText = view.findViewById(R.id.editTextTextPassword)
-        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
-        requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility = View.GONE
+        //view.findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
+
         button1.setOnClickListener{
             val db = DatabaseInfo(requireContext(), null)
             val c = db.getUserByEmail(email.text.toString())
@@ -47,6 +48,8 @@ class LoginFragment : Fragment(R.layout.login) {
                     pass.error = "Invalid password. Try again!"
                 }
                 else{
+                    var rva = requireActivity().findViewById<RecyclerView>(R.id.recyclerView).adapter as RecyclerViewAdapter
+                    rva.setCurrentUser(c.getString(0).toInt())
                     requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility = View.VISIBLE
                     view.findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
                 }
@@ -61,6 +64,12 @@ class LoginFragment : Fragment(R.layout.login) {
     override fun onPause() {
         super.onPause()
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility=View.GONE
+        requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility = View.GONE
     }
 
 }

@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
 import com.example.myapplication.classes.Events
 import com.example.myapplication.classes.User
+import kotlin.properties.Delegates
 
 
 class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLiteOpenHelper (context, DATABASE_NAME, factory, 2){
@@ -23,7 +24,8 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
                     TableEvents.COL_HOURS + " TEXT, " +
                     TableEvents.COL_NUMBEROFPERSONS + " INTEGER, " +
                     TableEvents.COL_DESCRIPTION + " TEXT, " +
-                    TableEvents.COL_TAG + " TEXT)"
+                    TableEvents.COL_TAG + " TEXT, " +
+                    TableEvents.COL_Creator + " INTEGER)"
 
     val SQL_DELETE_TABLE_EVENTS_QUERY = "DROP TABLE IF EXISTS" + TableEvents.TABLE_NAME
 
@@ -80,6 +82,7 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         const val COL_NUMBEROFPERSONS = "numberOfPersons"
         const val COL_DESCRIPTION = "description"
         const val COL_TAG = "tag"
+        const val COL_Creator = "createdBy"
     }
 
     object TableUser : BaseColumns {
@@ -162,6 +165,7 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         cv.put(TableEvents.COL_NUMBEROFPERSONS, event.numberOfPersons)
         cv.put(TableEvents.COL_DESCRIPTION, event.description)
         cv.put(TableEvents.COL_TAG, event.tag)
+        cv.put(TableEvents.COL_Creator, event.createdBy)
         db.insert(TableEvents.TABLE_NAME, null, cv)
         db.close()
     }
@@ -173,12 +177,26 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         return user
     }
 
+    fun getUserById (id : Int) : Cursor{
+        val db = this.readableDatabase
+        val user = db.rawQuery("SELECT * FROM users WHERE _id='$id';", null)
+
+        return user
+    }
     fun getEvents():Cursor{
         val db = this.readableDatabase
         val events = db.rawQuery("SELECT * FROM events", null)
         return events
 
     }
+
+    fun getEventById(id : Int):Cursor{
+        val db = this.readableDatabase
+        val event = db.rawQuery("SELECT * FROM events WHERE _id=$id;", null)
+        return event
+    }
+
+
 /*    fun getName(): Cursor {
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
