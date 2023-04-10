@@ -179,13 +179,27 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
 
     fun getUserById (id : Int) : Cursor{
         val db = this.readableDatabase
-        val user = db.rawQuery("SELECT * FROM users WHERE _id='$id';", null)
+        val user = db.rawQuery("SELECT * FROM users WHERE _id=$id;", null)
 
         return user
     }
     fun getEvents():Cursor{
         val db = this.readableDatabase
         val events = db.rawQuery("SELECT * FROM events", null)
+        return events
+
+    }
+
+    fun getEventsByTag(tag: String):Cursor{
+        val db = this.readableDatabase
+        val events : Cursor
+        if (tag != "All"){
+            events = db.rawQuery("SELECT * FROM events WHERE tag ='$tag'", null)
+        }
+        else{
+            events = db.rawQuery("SELECT * FROM events", null)
+        }
+
         return events
 
     }

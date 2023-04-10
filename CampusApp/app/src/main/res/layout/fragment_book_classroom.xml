@@ -35,6 +35,7 @@
         tools:ignore="LabelFor,TextSizeCheck" />
 
     <TableLayout
+        android:id="@+id/roomSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"

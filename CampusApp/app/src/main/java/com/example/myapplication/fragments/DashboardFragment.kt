@@ -5,12 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ScrollView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 import androidx.cardview.widget.CardView
+import androidx.core.view.get
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -55,6 +54,34 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         val e = db.getEventById(1)
         e.moveToFirst()
 
+
+        val spinner: Spinner = view.findViewById(R.id.filterTagSpinner)
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.tags2,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+        }
+
+        val filter : Button = view.findViewById(R.id.buttonFilter)
+        filter.setOnClickListener{
+            if (spinner.selectedItem.toString()!= "All"){
+                var rva1 = rv.adapter as RecyclerViewAdapter
+                rva1.hasTag(spinner.selectedItem.toString(), db)
+                rv.adapter=rva1
+            }
+            else{
+                var rva2 = rv.adapter as RecyclerViewAdapter
+                rva2.hasTag("All", db)
+                rv.adapter=rva2
+            }
+        }
+
+
         cv.findViewById<TextView>(R.id.item_title).text = e.getString(1).toString()
         cv.findViewById<TextView>(R.id.item_description).text = e.getString(5).toString()
         when (e.getString(6)){
@@ -74,6 +101,8 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility=View.GONE
         requireActivity().findViewById<CardView>(R.id.cardView).visibility = View.GONE
         requireActivity().findViewById<CardView>(R.id.cardView2).visibility = View.GONE
+        requireActivity().findViewById<Spinner>(R.id.filterTagSpinner).visibility = View.GONE
+        requireActivity().findViewById<Button>(R.id.buttonFilter).visibility = View.GONE
     }
 
 }

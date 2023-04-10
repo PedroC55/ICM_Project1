@@ -1,22 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/filterTagSpinner"
+        style="?android:attr/spinnerItemStyle"
+        android:layout_width="216dp"
+        android:layout_height="48dp"
+        android:layout_margin="20sp"
+        android:contentDescription="Choose Tag"
+        android:minHeight="48dp"
+        android:singleLine="true"
+        android:text="Choose Tag"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/fl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.533" />
+
+    <FrameLayout
+        android:id="@+id/fl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        android:layout_margin="15dp"
-        android:foreground="?selectableItemBackground"
-        android:clickable="true"
+        android:layout_height="650dp"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterTagSpinner">
 
-        android:background="#2196F3">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="#2196F3"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            app:cardCornerRadius="10dp"
 
-    </androidx.cardview.widget.CardView>
-</FrameLayout>
+            app:cardElevation="3dp">
+
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/buttonFilter"
+        android:layout_width="101dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="21dp"
+        android:text="Filter"
+        app:layout_constraintBottom_toTopOf="@+id/fl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/filterTagSpinner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 

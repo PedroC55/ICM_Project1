@@ -54,4 +54,13 @@
         <item>Game Night</item>
         <item>Concert</item>
     </string-array>
+    <string-array name="tags2">
+        <item>All</item>
+        <item>Beach</item>
+        <item>Cinema</item>
+        <item>Party</item>
+        <item>Sports</item>
+        <item>Game Night</item>
+        <item>Concert</item>
+    </string-array>
 </resources>
