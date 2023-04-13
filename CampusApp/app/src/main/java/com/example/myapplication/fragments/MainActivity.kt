@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val DashboardFragment = DashboardFragment()
-        val MapFragment = MapFragment()
+        val MapFragment = PathToClassroomFragment()
         val NearByEventsFragment = NearByEventsFragment()
         val ClassroomScheduleFragment = ClassroomScheduleFragment()
 

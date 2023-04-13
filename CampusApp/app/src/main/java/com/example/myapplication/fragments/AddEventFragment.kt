@@ -13,7 +13,6 @@ import com.example.myapplication.classes.Events
 import com.example.myapplication.classes.RecyclerViewAdapter
 import com.example.myapplication.database.DatabaseInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.type.DateTime
 import java.text.SimpleDateFormat
 import java.util.Date
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.example.myapplication.R
 
 
-class MapFragment : Fragment(R.layout.fragment_map) {
+class Map2Fragment : Fragment(R.layout.fragment_map) {
 
 
     override fun onCreateView(

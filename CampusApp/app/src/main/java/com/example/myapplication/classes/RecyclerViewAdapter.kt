@@ -54,6 +54,7 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
         val db = DatabaseInfo(parent.context, null)
         val c = db.getEventsByTag(tag1)
         c.moveToFirst()
+        //if (c.count>0)
         itemTitles[0] = c.getString(1)
         itemDescription[0] = c.getString(5)
         when (c.getString(6)) {

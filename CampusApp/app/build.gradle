@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -35,9 +34,30 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    packagingOptions {
+        jniLibs.pickFirsts.add("lib/**/libc++_shared.so")
+    }
+
+    configurations {
+        all { // You should exclude one of them not both of them
+            exclude group: "com.google.protobuf", module: "protobuf-javalite"
+            exclude group: "com.google.firebase", module: "protolite-well-known-types"
+        }
+    }
 }
 
 dependencies {
+    //maps sdk
+    implementation "com.tomtom.sdk.location:provider-android:0.3.1617"
+    implementation "com.tomtom.sdk.location:provider-gms:0.3.1617"
+    implementation "com.tomtom.sdk.location:provider-proxy:0.3.1617"
+    implementation "com.tomtom.sdk.location:provider:0.3.1617"
+    implementation "com.tomtom.sdk.maps:map-display:0.3.1617"
+    implementation "com.tomtom.sdk.routing:route-planner-online:0.3.1617"
+    implementation "com.tomtom.sdk.search:search-online:0.3.1617"
+
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -56,5 +76,4 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0'
-    implementation 'com.google.android.gms:play-services-location:19.0.1'
 }

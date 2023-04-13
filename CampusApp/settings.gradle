@@ -12,7 +12,14 @@ dependencyResolutionManagement {
         mavenCentral()
 
         maven { url "https://jitpack.io/" }
+        maven {
+            url "https://repositories.tomtom.com/artifactory/maven"
+        }
+        maven {url 'https://repositories.tomtom.com/artifactory/maps-sdk-legacy-android'}
+
     }
 }
+
+
 rootProject.name = "My Application"
 include ':app'
