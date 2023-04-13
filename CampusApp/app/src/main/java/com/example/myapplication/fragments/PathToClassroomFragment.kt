@@ -83,7 +83,7 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                 zoom = 14.0
             )
 
-            val routePlanner = create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
+            val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
 
             val vagos = GeoPoint(40.55220362077403, -8.686078872375395)
             /*val routePlanningOptions = RoutePlanningOptions(
@@ -98,9 +98,10 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                 is Result.Failure -> result.failure()
             }*/
 
-            val routePlanningOptions = RoutePlanningOptions(
+            /*val routePlanningOptions = RoutePlanningOptions(
                 itinerary = Itinerary(origin = aveiro, destination = vagos),
                 costModel = CostModel(routeType = RouteType.Efficient),
+                guidanceOptions = routeOptions,
                 vehicle = Vehicle.Truck(),
                 alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
             )
@@ -108,30 +109,116 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                 routePlanningOptions,
                 object : RoutePlanningCallback {
                     override fun onSuccess(result: RoutePlanningResponse) {
-                        /* YOUR CODE GOES HERE */
+                        *//* YOUR CODE GOES HERE *//*
                     }
 
                     override fun onFailure(failure: RoutingFailure) {
-                        /* YOUR CODE GOES HERE */
+                        *//* YOUR CODE GOES HERE *//*
                     }
 
                     override fun onRoutePlanned(route: com.tomtom.sdk.routing.route.Route) {
-                        /* YOUR CODE GOES HERE */
+                        *//* YOUR CODE GOES HERE *//*
                     }
                 }
-            )
+            )*/
 
 
             //val rb = result.value().routes[0]
 
 
+            val routePlanningOptions = RoutePlanningOptions(
+                itinerary = Itinerary(origin = aveiro, destination = vagos),
+                costModel = CostModel(routeType = RouteType.Fast),
+                vehicle = Vehicle.Truck(),
+                alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
+            )
+            Log.d("Itenerary:" ,routePlanningOptions.itinerary.toString())
 
+            //val rotas = routePlanningOptions.itinerary.waypoints.get(0)
+
+            //Log.d("rota:" ,rotas.toString())
+
+
+            /*val routeOptions = RouteOptions(
+                geometry = listOf(
+                    aveiro,
+                    vagos
+                ),
+                color = Color.BLUE,
+                outlineWidth = 3.0,
+                widths = listOf(WidthByZoom(5.0)),
+                progress = Distance.meters(1000.0),
+                instructions = listOf(
+                    Instruction(
+                        routeOffset = Distance.meters(1000.0),
+                        combineWithNext = false
+                    ),
+                    Instruction(
+                        routeOffset = Distance.meters(2000.0),
+                        combineWithNext = true
+                    ),
+                    Instruction(routeOffset = Distance.meters(3000.0))
+                ),
+                tag = "Extra information about the route",
+                departureMarkerVisible = true,
+                destinationMarkerVisible = true
+            )*/
+
+
+
+
+            var list = mutableListOf<GeoPoint>()
 
             val onLocationUpdateListener =
                 OnLocationUpdateListener { location: GeoLocation -> /* YOUR CODE GOES HERE */ }
             mapFragment.getMapAsync { tomtomMap: TomTomMap ->
                 tomtomMap.setFrameRate(24)
                 //val mapLocationProvider = tomtomMap.getLocationProvider()
+                routePlanner.planRoute(
+                    routePlanningOptions,
+                    object : RoutePlanningCallback {
+                        override fun onSuccess(result: RoutePlanningResponse) {
+                            
+
+                            for (i in result.routes.get(0).routePoints){
+                                list.add(i.coordinate)
+
+                            }
+
+                            val routeOptions = RouteOptions(
+                                geometry = list,
+                                color = Color.BLUE,
+                                outlineWidth = 3.0,
+                                widths = listOf(WidthByZoom(5.0)),
+                                progress = Distance.meters(1000.0),
+                                instructions = listOf(
+                                    Instruction(
+                                        routeOffset = Distance.meters(1000.0),
+                                        combineWithNext = false
+                                    ),
+                                    Instruction(
+                                        routeOffset = Distance.meters(2000.0),
+                                        combineWithNext = true
+                                    ),
+                                    Instruction(routeOffset = Distance.meters(3000.0))
+                                ),
+                                tag = "Extra information about the route",
+                                departureMarkerVisible = true,
+                                destinationMarkerVisible = true
+                            )
+                            val route = tomtomMap.addRoute(routeOptions)
+                        }
+
+                        override fun onFailure(failure: RoutingFailure) {
+                            /* YOUR CODE GOES HERE */
+                        }
+
+                        override fun onRoutePlanned(route: com.tomtom.sdk.routing.route.Route) {
+
+                        }
+                    }
+                )
+
                 tomtomMap.setLocationProvider(locationProvider)
                 locationProvider.enable()
                 tomtomMap.enableLocationMarker(locationMarkerOptions)
