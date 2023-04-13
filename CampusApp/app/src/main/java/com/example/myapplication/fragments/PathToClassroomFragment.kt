@@ -41,6 +41,8 @@ import com.tomtom.sdk.routing.options.calculation.RouteType
 import com.tomtom.sdk.vehicle.Vehicle
 import kotlin.Result.*
 import com.tomtom.sdk.common.Result
+import com.tomtom.sdk.map.display.image.ImageFactory
+import com.tomtom.sdk.map.display.marker.MarkerOptions
 import com.tomtom.sdk.routing.RoutePlanningCallback
 import com.tomtom.sdk.routing.RoutePlanningResponse
 import com.tomtom.sdk.routing.RoutingFailure
@@ -86,83 +88,18 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
             val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
 
             val vagos = GeoPoint(40.55220362077403, -8.686078872375395)
-            /*val routePlanningOptions = RoutePlanningOptions(
-                itinerary = Itinerary(origin = aveiro, destination = vagos),
-                costModel = CostModel(routeType = RouteType.Efficient),
-                vehicle = Vehicle.Truck(),
-                alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
-            )
-            val result = routePlanner.planRoute(routePlanningOptions)
-            when (result) {
-                is Result.Success -> result.value()
-                is Result.Failure -> result.failure()
-            }*/
-
-            /*val routePlanningOptions = RoutePlanningOptions(
-                itinerary = Itinerary(origin = aveiro, destination = vagos),
-                costModel = CostModel(routeType = RouteType.Efficient),
-                guidanceOptions = routeOptions,
-                vehicle = Vehicle.Truck(),
-                alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
-            )
-            routePlanner.planRoute(
-                routePlanningOptions,
-                object : RoutePlanningCallback {
-                    override fun onSuccess(result: RoutePlanningResponse) {
-                        *//* YOUR CODE GOES HERE *//*
-                    }
-
-                    override fun onFailure(failure: RoutingFailure) {
-                        *//* YOUR CODE GOES HERE *//*
-                    }
-
-                    override fun onRoutePlanned(route: com.tomtom.sdk.routing.route.Route) {
-                        *//* YOUR CODE GOES HERE *//*
-                    }
-                }
-            )*/
-
-
-            //val rb = result.value().routes[0]
-
-
             val routePlanningOptions = RoutePlanningOptions(
                 itinerary = Itinerary(origin = aveiro, destination = vagos),
-                costModel = CostModel(routeType = RouteType.Fast),
+                costModel = CostModel(routeType = RouteType.Efficient),
                 vehicle = Vehicle.Truck(),
                 alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
             )
-            Log.d("Itenerary:" ,routePlanningOptions.itinerary.toString())
-
-            //val rotas = routePlanningOptions.itinerary.waypoints.get(0)
-
-            //Log.d("rota:" ,rotas.toString())
 
 
-            /*val routeOptions = RouteOptions(
-                geometry = listOf(
-                    aveiro,
-                    vagos
-                ),
-                color = Color.BLUE,
-                outlineWidth = 3.0,
-                widths = listOf(WidthByZoom(5.0)),
-                progress = Distance.meters(1000.0),
-                instructions = listOf(
-                    Instruction(
-                        routeOffset = Distance.meters(1000.0),
-                        combineWithNext = false
-                    ),
-                    Instruction(
-                        routeOffset = Distance.meters(2000.0),
-                        combineWithNext = true
-                    ),
-                    Instruction(routeOffset = Distance.meters(3000.0))
-                ),
-                tag = "Extra information about the route",
-                departureMarkerVisible = true,
-                destinationMarkerVisible = true
-            )*/
+            val markerOptions = MarkerOptions(
+                coordinate = aveiro,
+                pinImage = ImageFactory.fromResource(R.drawable.uni)
+            )
 
 
 
@@ -218,6 +155,9 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         }
                     }
                 )
+                tomtomMap.addMarker(markerOptions)
+                tomtomMap.markersFadingRange = IntRange(2, 5)
+                tomtomMap.markersShrinkingRange = IntRange(2, 5)
 
                 tomtomMap.setLocationProvider(locationProvider)
                 locationProvider.enable()
