@@ -178,7 +178,6 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                     routePlanningOptions,
                     object : RoutePlanningCallback {
                         override fun onSuccess(result: RoutePlanningResponse) {
-                            
 
                             for (i in result.routes.get(0).routePoints){
                                 list.add(i.coordinate)
