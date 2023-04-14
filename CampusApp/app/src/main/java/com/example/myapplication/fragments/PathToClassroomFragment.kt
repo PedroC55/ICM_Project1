@@ -41,12 +41,15 @@ import com.tomtom.sdk.routing.options.calculation.RouteType
 import com.tomtom.sdk.vehicle.Vehicle
 import kotlin.Result.*
 import com.tomtom.sdk.common.Result
+import com.tomtom.sdk.map.display.gesture.MapPanningListener
 import com.tomtom.sdk.map.display.image.ImageFactory
+import com.tomtom.sdk.map.display.internal.va
 import com.tomtom.sdk.map.display.marker.MarkerOptions
 import com.tomtom.sdk.routing.RoutePlanningCallback
 import com.tomtom.sdk.routing.RoutePlanningResponse
 import com.tomtom.sdk.routing.RoutingFailure
-
+import com.example.myapplication.classes.Markers
+import com.tomtom.sdk.map.display.marker.Marker
 import kotlin.time.Duration.Companion.milliseconds
 
 class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
@@ -95,22 +98,13 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                 alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
             )
 
-
-            val markerOptions = MarkerOptions(
-                coordinate = aveiro,
-                pinImage = ImageFactory.fromResource(R.drawable.uni)
-            )
-
-
-
-
             var list = mutableListOf<GeoPoint>()
+
 
             val onLocationUpdateListener =
                 OnLocationUpdateListener { location: GeoLocation -> /* YOUR CODE GOES HERE */ }
             mapFragment.getMapAsync { tomtomMap: TomTomMap ->
                 tomtomMap.setFrameRate(24)
-                //val mapLocationProvider = tomtomMap.getLocationProvider()
                 routePlanner.planRoute(
                     routePlanningOptions,
                     object : RoutePlanningCallback {
@@ -155,9 +149,32 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         }
                     }
                 )
-                tomtomMap.addMarker(markerOptions)
-                tomtomMap.markersFadingRange = IntRange(2, 5)
-                tomtomMap.markersShrinkingRange = IntRange(2, 5)
+                tomtomMap.isMarkersFadingEnabled = true
+                tomtomMap.isMarkersShrinkingEnabled = true
+                tomtomMap.markersFadingRange = IntRange(20, 50)
+                tomtomMap.markersShrinkingRange = IntRange(20, 50)
+                tomtomMap.addMapPanningListener(object : MapPanningListener {
+                    override fun onMapPanningEnded() {
+                    }
+
+                    override fun onMapPanningOngoing() {
+                    }
+
+                    override fun onMapPanningStarted() {
+                        if (cameraOptions.zoom!!>12){
+                            var m = Markers()
+                            for(a in m.getMarkers())
+                            tomtomMap.addMarker(a)
+                        }
+                    }
+                })
+
+                tomtomMap.addMarkerClickListener { marker: Marker ->
+                    if (!marker.isSelected()) {
+                        marker.select()
+                        mapFragment.markerBalloonViewAdapter = CustomBalloonViewAdapter(context = requireContext())
+                    }
+                }
 
                 tomtomMap.setLocationProvider(locationProvider)
                 locationProvider.enable()
@@ -165,7 +182,8 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                 tomtomMap.moveCamera(cameraOptions)
                 locationProvider.addOnLocationUpdateListener(onLocationUpdateListener)
                 val lastLocation = locationProvider.lastKnownLocation
-        }
+            }
+            //
 
 
         }

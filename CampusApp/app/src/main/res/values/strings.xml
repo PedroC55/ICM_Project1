@@ -46,6 +46,9 @@
     <string name="creator">Created By:\n%1$s</string>
     <string name="age">Age:\n%1$s</string>
     <string name="email">Email:\n%1$s</string>
+    <string name="dpname">Department</string>
+    <string name="balloon_default_text">dpname</string>
+    <string name="dptype">Building Tyoe</string>
     <string-array name="tags">
         <item>Beach</item>
         <item>Cinema</item>
