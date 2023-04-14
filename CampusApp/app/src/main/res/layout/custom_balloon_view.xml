@@ -2,27 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/maps_light_gray"
     android:gravity="center"
-    android:orientation="horizontal">
-
+    android:orientation="horizontal"
+    android:background="@drawable/layout_bg"
+    >
     <ImageView
         android:id="@+id/ballon_image"
-        android:layout_width="wrap_content"
+        android:layout_width="25dp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/offset_triple_dot"
-        android:src="@drawable/uni" />
+        android:padding="3dp"
+        android:src="@drawable/uni"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="3dp">
 
         <TextView
+            android:id="@+id/building_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/offset_triple_dot"
+            android:padding="3dp"
             android:text="@string/dptype"
             android:textStyle="bold" />
 
@@ -30,7 +33,7 @@
             android:id="@+id/balloon_text_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/offset_triple_dot"
+            android:padding="3dp"
             android:text="@string/dpname" />
     </LinearLayout>
 </LinearLayout>

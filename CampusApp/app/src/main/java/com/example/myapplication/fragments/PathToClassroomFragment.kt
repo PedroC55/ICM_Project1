@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.myapplication.R
@@ -49,7 +51,14 @@ import com.tomtom.sdk.routing.RoutePlanningCallback
 import com.tomtom.sdk.routing.RoutePlanningResponse
 import com.tomtom.sdk.routing.RoutingFailure
 import com.example.myapplication.classes.Markers
+import com.tomtom.sdk.map.display.camera.CameraChangeListener
+import com.tomtom.sdk.map.display.internal.da
 import com.tomtom.sdk.map.display.marker.Marker
+import com.tomtom.sdk.search.SearchCallback
+import com.tomtom.sdk.search.SearchOptions
+import com.tomtom.sdk.search.SearchResponse
+import com.tomtom.sdk.search.common.error.SearchFailure
+import com.tomtom.sdk.search.online.OnlineSearch
 import kotlin.time.Duration.Companion.milliseconds
 
 class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
@@ -60,11 +69,15 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_path_to_classroom, container, false)
+        val searchApi = OnlineSearch.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
+        var m = Markers()
+
         val permission = Manifest.permission.ACCESS_FINE_LOCATION
         if (ContextCompat.checkSelfPermission(requireContext(), permission) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission), 1)
         }
         else{
+
             val mapOptions = MapOptions(mapKey = "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
             val mapFragment = MapFragment.newInstance(mapOptions)
 
@@ -87,74 +100,16 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                 position = aveiro,
                 zoom = 14.0
             )
-
-            val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
-
-            val vagos = GeoPoint(40.55220362077403, -8.686078872375395)
-            val routePlanningOptions = RoutePlanningOptions(
-                itinerary = Itinerary(origin = aveiro, destination = vagos),
-                costModel = CostModel(routeType = RouteType.Efficient),
-                vehicle = Vehicle.Truck(),
-                alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
-            )
-
-            var list = mutableListOf<GeoPoint>()
-
-
             val onLocationUpdateListener =
                 OnLocationUpdateListener { location: GeoLocation -> /* YOUR CODE GOES HERE */ }
             mapFragment.getMapAsync { tomtomMap: TomTomMap ->
-                tomtomMap.setFrameRate(24)
-                routePlanner.planRoute(
-                    routePlanningOptions,
-                    object : RoutePlanningCallback {
-                        override fun onSuccess(result: RoutePlanningResponse) {
-                            
-
-                            for (i in result.routes.get(0).routePoints){
-                                list.add(i.coordinate)
-
-                            }
-
-                            val routeOptions = RouteOptions(
-                                geometry = list,
-                                color = Color.BLUE,
-                                outlineWidth = 3.0,
-                                widths = listOf(WidthByZoom(5.0)),
-                                progress = Distance.meters(1000.0),
-                                instructions = listOf(
-                                    Instruction(
-                                        routeOffset = Distance.meters(1000.0),
-                                        combineWithNext = false
-                                    ),
-                                    Instruction(
-                                        routeOffset = Distance.meters(2000.0),
-                                        combineWithNext = true
-                                    ),
-                                    Instruction(routeOffset = Distance.meters(3000.0))
-                                ),
-                                tag = "Extra information about the route",
-                                departureMarkerVisible = true,
-                                destinationMarkerVisible = true
-                            )
-                            val route = tomtomMap.addRoute(routeOptions)
-                        }
-
-                        override fun onFailure(failure: RoutingFailure) {
-                            /* YOUR CODE GOES HERE */
-                        }
-
-                        override fun onRoutePlanned(route: com.tomtom.sdk.routing.route.Route) {
-
-                        }
-                    }
-                )
                 tomtomMap.isMarkersFadingEnabled = true
                 tomtomMap.isMarkersShrinkingEnabled = true
                 tomtomMap.markersFadingRange = IntRange(20, 50)
                 tomtomMap.markersShrinkingRange = IntRange(20, 50)
                 tomtomMap.addMapPanningListener(object : MapPanningListener {
                     override fun onMapPanningEnded() {
+
                     }
 
                     override fun onMapPanningOngoing() {
@@ -162,9 +117,9 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
 
                     override fun onMapPanningStarted() {
                         if (cameraOptions.zoom!!>12){
-                            var m = Markers()
-                            for(a in m.getMarkers())
-                            tomtomMap.addMarker(a)
+                            for(a in m.getMarkers()){
+                                tomtomMap.addMarker(a)
+                            }
                         }
                     }
                 })
@@ -175,7 +130,14 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         mapFragment.markerBalloonViewAdapter = CustomBalloonViewAdapter(context = requireContext())
                     }
                 }
-
+                tomtomMap.addMapLongClickListener{
+                    for(m in tomtomMap.markers){
+                        if(m.isSelected()){
+                            m.deselect()
+                        }
+                    }
+                    true
+                }
                 tomtomMap.setLocationProvider(locationProvider)
                 locationProvider.enable()
                 tomtomMap.enableLocationMarker(locationMarkerOptions)
@@ -183,15 +145,80 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                 locationProvider.addOnLocationUpdateListener(onLocationUpdateListener)
                 val lastLocation = locationProvider.lastKnownLocation
             }
-            //
+            var button = view.findViewById<Button>(R.id.button2)
+            button.setOnClickListener(){
+                var dest : GeoPoint?=null
+                var localToGo = view.findViewById<EditText>(R.id.textView8).text.toString()
+                var dept = localToGo.split(".")[0]
+                when (dept){
+                    "02" -> dest = m.linguas.coordinate
+                    "03" -> dest = m.antrei.coordinate
+                    "04" -> dest = m.deti.coordinate
+                    "05" -> dest = m.psi.coordinate
+                    "06" -> dest = m.cantina.coordinate
+                    "07" -> dest = m.amb.coordinate
+                    "08" -> dest = m.dbio.coordinate
+                    "09" -> dest = m.mat.coordinate
+                    "10" -> dest = m.degeit.coordinate
+                    "11" -> dest = m.dmat.coordinate
+                    "12" -> dest = m.csoc.coordinate
+                    "13" -> dest = m.fisica.coordinate
+                    "15" -> dest = m.quimica.coordinate
+                    "16" -> dest = m.geociencias.coordinate
+                    "20" -> dest = m.estga.coordinate
+                    "21" -> dest = m.artes.coordinate
+                    "22" -> dest = m.meca.coordinate
+                    "23" -> dest = m.cp.coordinate
+                    "25" -> dest = m.reitoria.coordinate
+                    "28" -> dest = m.civil.coordinate
+                    "30" -> dest = m.essua.coordinate
+                    "34" -> dest = m.esan.coordinate
+                    "35" -> dest = m.isca.coordinate
+                    "B" -> dest = m.residencia.coordinate
+                    "E" -> dest = m.pavilhão.coordinate
+                    "F" -> dest = m.restauranteUni.coordinate
+                    "M" -> dest = m.cantinaCrasto.coordinate
+                    "N" -> dest = m.casaEst.coordinate
+                }
+                mapFragment.getMapAsync(){
+                    it.removeRoutes()
+                    val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
+                    val routePlanningOptions = RoutePlanningOptions(
+                        itinerary = Itinerary(origin = locationProvider.lastKnownLocation!!.position, destination = dest!!),
+                        costModel = CostModel(routeType = RouteType.Efficient),
+                        vehicle = Vehicle.Pedestrian(),
+                        alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
+                    )
+                    var list = mutableListOf<GeoPoint>()
+                    it.setFrameRate(24)
+                    routePlanner.planRoute(
+                        routePlanningOptions,
+                        object : RoutePlanningCallback {
+                            override fun onSuccess(result: RoutePlanningResponse) {
+                                for (i in result.routes.get(0).routePoints){
+                                    list.add(i.coordinate)
 
-
+                                }
+                                val routeOptions = RouteOptions(
+                                    geometry = list,
+                                    color = Color.BLUE,
+                                    outlineWidth = 0.7,
+                                    widths = listOf(WidthByZoom(5.0)),
+                                    tag = "Extra information about the route",
+                                    departureMarkerVisible = true,
+                                    destinationMarkerVisible = true
+                                )
+                                val route = it.addRoute(routeOptions)
+                            }
+                            override fun onFailure(failure: RoutingFailure) {
+                            }
+                            override fun onRoutePlanned(route: com.tomtom.sdk.routing.route.Route) {
+                            }
+                        }
+                    )
+                }
+            }
         }
-        // Inflate the layout for this fragment
-
-
-
-
         return view
     }
 }
