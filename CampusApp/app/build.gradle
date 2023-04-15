@@ -57,8 +57,15 @@ dependencies {
     implementation "com.tomtom.sdk.routing:route-planner-online:0.3.1617"
     implementation "com.tomtom.sdk.search:search-online:0.3.1617"
 
+    def camerax_version = "1.1.0-beta01"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-video:${camerax_version}"
+    implementation "androidx.camera:camera-view:${camerax_version}"
+    implementation "androidx.camera:camera-extensions:${camerax_version}"
 
-
+    implementation 'com.google.mlkit:barcode-scanning:17.1.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
