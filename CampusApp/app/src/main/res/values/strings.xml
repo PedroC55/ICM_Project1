@@ -70,4 +70,5 @@
     <string name="start_capture">Start Capture</string>
     <string name="stop_capture">Stop Capture</string>
     <string name="qrcodeText">%1$s</string>
+    <string name="analyse_text">Analyse Text</string>
 </resources>

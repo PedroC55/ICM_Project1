@@ -26,9 +26,6 @@
             android:id="@+id/action_dashboardFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_dashboardFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-        <action
             android:id="@+id/action_dashboardFragment_to_coursesBeingTakenFragment"
             app:destination="@id/coursesBeingTakenFragment" />
         <action
@@ -49,17 +46,15 @@
         <action
             android:id="@+id/action_dashboardFragment_to_addEventFragment"
             app:destination="@id/addEventFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_analyzeTextFragment"
+            app:destination="@id/analyzeTextFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.myapplication.fragments.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile"/>
-    <fragment
-        android:id="@+id/mapFragment"
-        android:name="com.example.myapplication.fragments.MapFragment"
-        android:label="MapFragment"
-        tools:layout="@layout/fragment_map"/>
     <fragment
         android:id="@+id/coursesBeingTakenFragment"
         android:name="com.example.myapplication.fragments.CoursesBeingTakenFragment"
@@ -93,7 +88,11 @@
         android:id="@+id/classroomScheduleFragment"
         android:name="com.example.myapplication.fragments.ClassroomScheduleFragment"
         android:label="ClassroomScheduleFragment"
-        tools:layout="@layout/fragment_book_classroom"/>
+        tools:layout="@layout/fragment_book_classroom">
+        <action
+            android:id="@+id/action_classroomScheduleFragment_to_analyzeTextFragment"
+            app:destination="@id/analyzeTextFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.myapplication.fragments.RegisterFragment"
@@ -109,5 +108,13 @@
         <action
             android:id="@+id/action_addEventFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/analyzeTextFragment"
+        android:name="com.example.myapplication.fragments.AnalyzeTextFragment"
+        android:label="AnalyzeTextFragment" >
+        <action
+            android:id="@+id/action_analyzeTextFragment_to_classroomScheduleFragment"
+            app:destination="@id/classroomScheduleFragment" />
     </fragment>
 </navigation>

@@ -6,6 +6,18 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <Button
+        android:id="@+id/analyseText"
+        android:layout_width="122dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="96dp"
+        android:text="@string/analyse_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/button2"
         android:layout_width="122dp"
         android:layout_height="67dp"
@@ -38,7 +50,7 @@
         android:id="@+id/roomSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -49,11 +61,11 @@
         <TableRow android:background="@color/blue">
 
             <TextView
+                android:layout_weight="@integer/material_motion_duration_long_1"
                 android:padding="20sp"
                 android:text="@string/schedule2"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_weight="@integer/material_motion_duration_long_1"/>
+                android:textStyle="bold" />
         </TableRow>
 
         <TableRow
