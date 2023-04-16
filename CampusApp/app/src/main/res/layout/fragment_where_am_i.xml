@@ -22,16 +22,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-
         </androidx.camera.view.PreviewView>
 
         <TextView
             android:id="@+id/tvScannedData"
             android:layout_width="match_parent"
+            android:background="@color/blue"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
-            android:text="2222222222222222222"
+            android:layout_marginTop="430dp"
+            android:text="@string/qrcodeText"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

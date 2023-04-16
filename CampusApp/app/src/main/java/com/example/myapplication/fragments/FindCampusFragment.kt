@@ -32,6 +32,7 @@ import androidx.camera.video.VideoRecordEvent
 import androidx.camera.view.PreviewView
 import androidx.core.content.PermissionChecker
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -46,9 +47,10 @@ import java.util.Locale
 
 @ExperimentalGetImage class FindCampusFragment : Fragment(R.layout.fragment_where_am_i) {
     private var imageCapture: ImageCapture? = null
+
     //var text2: TextView
     private lateinit var cameraExecutor: ExecutorService
-    var tvScannedData = view?.findViewById<TextView>(R.id.tvScannedData)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,9 +62,11 @@ import java.util.Locale
             startCamera()
         } else {
             ActivityCompat.requestPermissions(
-                requireActivity(), REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+                requireActivity(), REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
         }
-
+        var tvScannedData = view.findViewById<TextView>(R.id.tvScannedData)
+        tvScannedData.visibility = View.GONE
         cameraExecutor = Executors.newSingleThreadExecutor()
         return view
     }
@@ -90,13 +94,9 @@ import java.util.Locale
 
             val cameraExecutor = Executors.newSingleThreadExecutor()
 
-            imageIDK.setAnalyzer(cameraExecutor, ImageAnalysis.Analyzer{
-                YourImageAnalyzer().analyze(it)
+            imageIDK.setAnalyzer(cameraExecutor, ImageAnalysis.Analyzer {
+                analyze(it)
             })
-            Log.d("GETTEXTCENAS", YourImageAnalyzer().getText())
-
-            tvScannedData?.visibility = View.VISIBLE
-            tvScannedData?.bringToFront()
 
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
@@ -107,10 +107,11 @@ import java.util.Locale
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageIDK)
+                    this, cameraSelector, preview, imageIDK
+                )
 
 
-            } catch(exc: Exception) {
+            } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
 
@@ -119,7 +120,8 @@ import java.util.Locale
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
-            requireContext(), it) == PackageManager.PERMISSION_GRANTED
+            requireContext(), it
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     override fun onDestroy() {
@@ -129,14 +131,17 @@ import java.util.Locale
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
-        IntArray) {
+        IntArray
+    ) {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                Toast.makeText(requireContext(),
+                Toast.makeText(
+                    requireContext(),
                     "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
                 requireActivity().finish()
             }
         }
@@ -147,7 +152,7 @@ import java.util.Locale
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
-            mutableListOf (
+            mutableListOf(
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
             ).apply {
@@ -161,75 +166,53 @@ import java.util.Locale
     val options = BarcodeScannerOptions.Builder()
         .setBarcodeFormats(
             Barcode.FORMAT_QR_CODE,
-            Barcode.FORMAT_AZTEC)
+            Barcode.FORMAT_AZTEC
+        )
         .enableAllPotentialBarcodes()
         .build()
 
 
-    @ExperimentalGetImage private class YourImageAnalyzer : ImageAnalysis.Analyzer {
+    fun analyze(imageProxy: ImageProxy) {
+        val mediaImage = imageProxy.image
+        if (mediaImage != null) {
+            val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
+            val scanner = BarcodeScanning.getClient()
+            val result = scanner.process(image)
+                .addOnSuccessListener { barcodes ->
+                    for (barcode in barcodes) {
+                        val bounds = barcode.boundingBox
+                        val corners = barcode.cornerPoints
 
-        override fun analyze(imageProxy: ImageProxy) {
-            val mediaImage = imageProxy.image
-            if (mediaImage != null) {
-                val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
-                val scanner = BarcodeScanning.getClient()
-                val result = scanner.process(image)
-                    .addOnSuccessListener { barcodes ->
-                        for (barcode in barcodes) {
-                            val bounds = barcode.boundingBox
-                            val corners = barcode.cornerPoints
+                        val rawValue = barcode.rawValue
 
-                            val rawValue = barcode.rawValue
-
-                            val valueType = barcode.valueType
-                            // See API reference for complete list of supported types
-                            when (valueType) {
-                                Barcode.TYPE_WIFI -> {
-                                    val ssid = barcode.wifi!!.ssid
-                                    val password = barcode.wifi!!.password
-                                    val type = barcode.wifi!!.encryptionType
-                                }
-                                Barcode.TYPE_URL -> {
-                                    val title = barcode.url!!.title
-                                    val url = barcode.url!!.url
-                                    var q = title + "\n" + url
-                                    setText(q)
-                                    Log.d("IDK", url.toString())
-                                    FindCampusFragment().tvScannedData?.text = q
-                                }
-                                Barcode.TYPE_TEXT -> {
-                                    Log.d("IDK2", barcode.rawValue!!.toString())
-
-                                }
-                                Barcode.FORMAT_QR_CODE -> {
-                                    Log.d("IDK3", barcode.rawValue!!.toString())
-                                }
+                        val valueType = barcode.valueType
+                        // See API reference for complete list of supported types
+                        when (valueType) {
+                            Barcode.TYPE_URL -> {
+                                val title = barcode.url!!.title
+                                val url = barcode.url!!.url
+                                var q = title + "\n" + url
+                                var qrcodeText = requireActivity().findViewById<TextView>(R.id.tvScannedData)
+                                qrcodeText.text = getString(R.string.qrcodeText, q)
+                                qrcodeText.visibility = View.VISIBLE
+                            }
+                            Barcode.TYPE_TEXT -> {
+                                val text = barcode.rawValue!!.toString()
+                                var qrcodeText = requireActivity().findViewById<TextView>(R.id.tvScannedData)
+                                qrcodeText.text = getString(R.string.qrcodeText, text)
+                                qrcodeText.visibility = View.VISIBLE
                             }
                         }
                     }
-                    .addOnFailureListener {
-                        Log.e(TAG, it.message ?: it.toString())
-                    }
-                    .addOnCompleteListener {
-                        imageProxy.close()
+                }
+                .addOnFailureListener {
+                    Log.e(TAG, it.message ?: it.toString())
+                }
+                .addOnCompleteListener {
+                    imageProxy.close()
 
-                    }
+                }
 
-            }
-        }
-
-        val st : String  = "adafaadadwadadadaSfaea"
-
-        fun setText(s: String){
-            st.replace(st,s)
-        }
-
-        fun getText(): String{
-            return st
         }
     }
-
-
-
-
 }
