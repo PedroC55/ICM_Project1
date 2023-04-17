@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -47,29 +48,30 @@ class MainActivity : AppCompatActivity() {
 
         val context = this
         DatabaseInfo(context, null)
-
+        val fragment = supportFragmentManager.findFragmentById(R.id.ll_wrapper)
+        var navController = fragment?.findNavController()!!
 
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        val DashboardFragment = DashboardFragment()
+        /*val DashboardFragment = DashboardFragment()
         val MapFragment = PathToClassroomFragment()
         val NearByEventsFragment = FindCampusFragment()
-        val ClassroomScheduleFragment = ClassroomScheduleFragment()
+        val ClassroomScheduleFragment = ClassroomScheduleFragment()*/
 
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.ic_home -> makeCurrentFragment(DashboardFragment)
-                R.id.ic_classroom -> makeCurrentFragment(ClassroomScheduleFragment)
-                R.id.ic_location -> makeCurrentFragment(MapFragment)
-                R.id.ic_social -> makeCurrentFragment(NearByEventsFragment)
+                R.id.ic_home ->navController.navigate(R.id.dashboardFragment)
+                R.id.ic_classroom -> navController.navigate(R.id.classroomScheduleFragment)
+                R.id.ic_location -> navController.navigate(R.id.pathToClassroomFragment)
+                R.id.ic_social -> navController.navigate(R.id.findCampusFragment)
             }
             true
         }
     }
 
 
-    private fun makeCurrentFragment(fragment: Fragment) =
+    /*private fun makeCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.ll_wrapper, fragment)
             commit()
-        }
+        }*/
 }

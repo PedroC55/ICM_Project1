@@ -5,6 +5,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,7 +17,9 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
+import com.example.myapplication.database.DatabaseInfo
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
@@ -47,7 +50,6 @@ import java.util.concurrent.Executors
                 REQUEST_CODE_PERMISSIONS
             )
         }
-        val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
 
 
@@ -127,31 +129,33 @@ import java.util.concurrent.Executors
         val mediaImage = imageProxy.image
         if (mediaImage != null) {
             val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
-            val scanner = BarcodeScanning.getClient()
-            val result = scanner.process(image)
-                .addOnSuccessListener { barcodes ->
-                    for (barcode in barcodes) {
-                        val bounds = barcode.boundingBox
-                        val corners = barcode.cornerPoints
-
-                        val rawValue = barcode.rawValue
-
-                        val valueType = barcode.valueType
-                        // See API reference for complete list of supported types
-                        when (valueType) {
-                            Barcode.TYPE_URL -> {
-                                val title = barcode.url!!.title
-                                val url = barcode.url!!.url
-                                var q = title + "\n" + url
-                                var qrcodeText = requireActivity().findViewById<TextView>(R.id.tvScannedData)
-                                qrcodeText.text = getString(R.string.qrcodeText, q)
-                                qrcodeText.visibility = View.VISIBLE
-                            }
-                            Barcode.TYPE_TEXT -> {
-                                val text = barcode.rawValue!!.toString()
-                                var qrcodeText = requireActivity().findViewById<TextView>(R.id.tvScannedData)
-                                qrcodeText.text = getString(R.string.qrcodeText, text)
-                                qrcodeText.visibility = View.VISIBLE
+            val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+            val result = recognizer.process(image)
+                .addOnSuccessListener { visionText ->
+                    val resultText = visionText.text
+                    for (block in visionText.textBlocks) {
+                        val blockText = block.text
+                        val blockCornerPoints = block.cornerPoints
+                        val blockFrame = block.boundingBox
+                        for (line in block.lines) {
+                            val lineText = line.text
+                            val lineCornerPoints = line.cornerPoints
+                            val lineFrame = line.boundingBox
+                            for (element in line.elements) {
+                                val elementText = element.text
+                                val elementCornerPoints = element.cornerPoints
+                                val elementFrame = element.boundingBox
+                                Log.d("AIIII", elementText)
+                                if(element.text.matches(Regex("\\d{2}.\\d{2}.\\d{2}"))){
+                                    val db = DatabaseInfo(requireContext(), null)
+                                    db.sClassroom(element.text)
+                                    val bundle = Bundle()
+                                    bundle.putString("sala", element.text)
+                                    val fragment = requireActivity().supportFragmentManager.findFragmentById(R.id.ll_wrapper)
+                                    var navController = fragment?.findNavController()!!
+                                    navController.navigate(R.id.action_analyzeTextFragment_to_classroomScheduleFragment)
+                                    //findNavController().navigate(R.id.action_analyzeTextFragment_to_classroomScheduleFragment)
+                                }
                             }
                         }
                     }

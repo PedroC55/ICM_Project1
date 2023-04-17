@@ -210,6 +210,17 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         return event
     }
 
+    var classroom by Delegates.notNull<String>()
+    fun sClassroom(s: String){
+        classroom = s
+    }
+
+    fun getClassroomByNumber():Cursor{
+        val db = this.readableDatabase
+        val classR = db.rawQuery("SELECT * FROM cSchedule WHERE roomnumber=$classroom;", null)
+        return classR
+    }
+
 
 /*    fun getName(): Cursor {
         val db = this.readableDatabase

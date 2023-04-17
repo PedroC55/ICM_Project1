@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.tomtom.quantity.Distance
 import com.tomtom.sdk.common.measures.UnitSystem
@@ -149,9 +150,7 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
             button.setOnClickListener(){
                 var dest : GeoPoint?=null
                 var localToGo = view.findViewById<EditText>(R.id.textView8).text.toString()
-                Log.d("LocalToGo", localToGo)
                 if (localToGo.length>1){
-                    Log.d("LocalToGo", "OI, Boy")
                     var dept = localToGo.split(".")[0]
                     when (dept){
                         "02" -> dest = m.linguas.coordinate
@@ -180,7 +179,6 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         "35" -> dest = m.isca.coordinate
                     }
                 }else{
-                    Log.d("LocalToGo", "OI, Girl")
                     when (localToGo){
                         "B" -> dest = m.residencia.coordinate
                         "E" -> dest = m.pavilhão.coordinate

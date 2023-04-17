@@ -37,9 +37,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         rv.visibility=View.VISIBLE
         val cv = requireActivity().findViewById<CardView>(R.id.cardView)
 
-
-
-
         val fab : FloatingActionButton = requireActivity().findViewById(R.id.fab)
         fab.visibility = View.VISIBLE
         fab.setOnClickListener{

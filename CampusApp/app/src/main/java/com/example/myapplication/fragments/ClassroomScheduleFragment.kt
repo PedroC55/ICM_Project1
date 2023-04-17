@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TableLayout
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
+import com.example.myapplication.database.DatabaseInfo
 
 
 class ClassroomScheduleFragment : Fragment(R.layout.fragment_book_classroom) {
@@ -29,13 +30,20 @@ class ClassroomScheduleFragment : Fragment(R.layout.fragment_book_classroom) {
         button.setOnClickListener{
             rs.visibility = View.VISIBLE
         }
-        Log.d("currentdest", findNavController().currentDestination.toString())
         val buttonAnalyse = view.findViewById<Button>(R.id.analyseText)
         buttonAnalyse.setOnClickListener{
-            findNavController().navigate(R.id.action_dashboardFragment_to_analyzeTextFragment)
+            val fragment = requireActivity().supportFragmentManager.findFragmentById(R.id.ll_wrapper)
+            var navController = fragment?.findNavController()!!
+            navController.navigate(R.id.analyzeTextFragment)
+            //findNavController().navigate(R.id.action_classroomScheduleFragment_to_analyzeTextFragment)
         }
-
+        /*val db = DatabaseInfo(requireContext(), null)
+        val classroom = db.getClassroomByNumber()
+        classroom.moveToFirst()*/
+        Log.d("classroom", (this.arguments?.getSerializable("sala")).toString())
         return view
     }
+
+
 
 }
