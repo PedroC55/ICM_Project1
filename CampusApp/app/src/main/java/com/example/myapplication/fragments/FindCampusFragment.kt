@@ -34,6 +34,7 @@ import androidx.core.content.PermissionChecker
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -65,6 +66,7 @@ import java.util.Locale
                 requireActivity(), REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
             )
         }
+        Log.d("currentdest", findNavController().currentDestination.toString())
         var tvScannedData = view.findViewById<TextView>(R.id.tvScannedData)
         tvScannedData.visibility = View.GONE
         cameraExecutor = Executors.newSingleThreadExecutor()

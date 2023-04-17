@@ -33,7 +33,7 @@ class NearByEventsFragment : Fragment(R.layout.fragment_events) {
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
         val rv : RecyclerView = requireActivity().findViewById(R.id.recyclerView)
         var rva = rv.adapter as RecyclerViewAdapter
-
+        Log.d("currentdest", findNavController().currentDestination.toString())
         Log.d("SUI", rva.getitemid().toString())
 
         val db = DatabaseInfo(requireContext(), null)

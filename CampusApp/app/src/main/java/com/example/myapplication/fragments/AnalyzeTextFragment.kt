@@ -69,7 +69,7 @@ import java.util.concurrent.Executors
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
             // Preview
-            val vF = requireActivity().findViewById<PreviewView>(R.id.viewFinder)
+            val vF = requireActivity().findViewById<PreviewView>(R.id.viewFinder2)
             val preview = Preview.Builder()
                 .build()
                 .also {

@@ -149,37 +149,46 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
             button.setOnClickListener(){
                 var dest : GeoPoint?=null
                 var localToGo = view.findViewById<EditText>(R.id.textView8).text.toString()
-                var dept = localToGo.split(".")[0]
-                when (dept){
-                    "02" -> dest = m.linguas.coordinate
-                    "03" -> dest = m.antrei.coordinate
-                    "04" -> dest = m.deti.coordinate
-                    "05" -> dest = m.psi.coordinate
-                    "06" -> dest = m.cantina.coordinate
-                    "07" -> dest = m.amb.coordinate
-                    "08" -> dest = m.dbio.coordinate
-                    "09" -> dest = m.mat.coordinate
-                    "10" -> dest = m.degeit.coordinate
-                    "11" -> dest = m.dmat.coordinate
-                    "12" -> dest = m.csoc.coordinate
-                    "13" -> dest = m.fisica.coordinate
-                    "15" -> dest = m.quimica.coordinate
-                    "16" -> dest = m.geociencias.coordinate
-                    "20" -> dest = m.estga.coordinate
-                    "21" -> dest = m.artes.coordinate
-                    "22" -> dest = m.meca.coordinate
-                    "23" -> dest = m.cp.coordinate
-                    "25" -> dest = m.reitoria.coordinate
-                    "28" -> dest = m.civil.coordinate
-                    "30" -> dest = m.essua.coordinate
-                    "34" -> dest = m.esan.coordinate
-                    "35" -> dest = m.isca.coordinate
-                    "B" -> dest = m.residencia.coordinate
-                    "E" -> dest = m.pavilhão.coordinate
-                    "F" -> dest = m.restauranteUni.coordinate
-                    "M" -> dest = m.cantinaCrasto.coordinate
-                    "N" -> dest = m.casaEst.coordinate
+                Log.d("LocalToGo", localToGo)
+                if (localToGo.length>1){
+                    Log.d("LocalToGo", "OI, Boy")
+                    var dept = localToGo.split(".")[0]
+                    when (dept){
+                        "02" -> dest = m.linguas.coordinate
+                        "03" -> dest = m.antrei.coordinate
+                        "04" -> dest = m.deti.coordinate
+                        "05" -> dest = m.psi.coordinate
+                        "06" -> dest = m.cantina.coordinate
+                        "07" -> dest = m.amb.coordinate
+                        "08" -> dest = m.dbio.coordinate
+                        "09" -> dest = m.mat.coordinate
+                        "10" -> dest = m.degeit.coordinate
+                        "11" -> dest = m.dmat.coordinate
+                        "12" -> dest = m.csoc.coordinate
+                        "13" -> dest = m.fisica.coordinate
+                        "15" -> dest = m.quimica.coordinate
+                        "16" -> dest = m.geociencias.coordinate
+                        "20" -> dest = m.estga.coordinate
+                        "21" -> dest = m.artes.coordinate
+                        "22" -> dest = m.meca.coordinate
+                        "23" -> dest = m.cp.coordinate
+                        "25" -> dest = m.reitoria.coordinate
+                        "28" -> dest = m.civil.coordinate
+                        "30" -> dest = m.essua.coordinate
+                        "34" -> dest = m.esan.coordinate
+                        "35" -> dest = m.isca.coordinate
+                    }
+                }else{
+                    Log.d("LocalToGo", "OI, Girl")
+                    when (localToGo){
+                        "B" -> dest = m.residencia.coordinate
+                        "E" -> dest = m.pavilhão.coordinate
+                        "F" -> dest = m.restauranteUni.coordinate
+                        "M" -> dest = m.cantinaCrasto.coordinate
+                        "N" -> dest = m.casaEst.coordinate
+                    }
                 }
+
                 mapFragment.getMapAsync(){
                     it.removeRoutes()
                     val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
