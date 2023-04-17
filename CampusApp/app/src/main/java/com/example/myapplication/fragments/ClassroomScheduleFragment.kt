@@ -23,13 +23,13 @@ class ClassroomScheduleFragment : Fragment(R.layout.fragment_book_classroom) {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_book_classroom, container, false)
 
-        val rs = view.findViewById<TableLayout>(R.id.roomSchedule)
-        rs.visibility = View.GONE
+        /*val rs = view.findViewById<TableLayout>(R.id.roomSchedule)
+        rs.visibility = View.GONE*/
 
-        val button = view.findViewById<Button>(R.id.button2)
+        /*val button = view.findViewById<Button>(R.id.button2)
         button.setOnClickListener{
             rs.visibility = View.VISIBLE
-        }
+        }*/
         val buttonAnalyse = view.findViewById<Button>(R.id.analyseText)
         buttonAnalyse.setOnClickListener{
             val fragment = requireActivity().supportFragmentManager.findFragmentById(R.id.ll_wrapper)

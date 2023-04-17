@@ -153,7 +153,7 @@ import java.util.concurrent.Executors
                                     bundle.putString("sala", element.text)
                                     val fragment = requireActivity().supportFragmentManager.findFragmentById(R.id.ll_wrapper)
                                     var navController = fragment?.findNavController()!!
-                                    navController.navigate(R.id.action_analyzeTextFragment_to_classroomScheduleFragment)
+                                    navController.navigate(R.id.action_analyzeTextFragment_to_scheduleFragment)
                                     //findNavController().navigate(R.id.action_analyzeTextFragment_to_classroomScheduleFragment)
                                 }
                             }

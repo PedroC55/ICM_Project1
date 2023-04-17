@@ -29,9 +29,6 @@
             android:id="@+id/action_dashboardFragment_to_coursesBeingTakenFragment"
             app:destination="@id/coursesBeingTakenFragment" />
         <action
-            android:id="@+id/action_dashboardFragment_to_scheduleFragment"
-            app:destination="@id/scheduleFragment" />
-        <action
             android:id="@+id/action_dashboardFragment_to_nearByEventsFragment"
             app:destination="@id/nearByEventsFragment" />
         <action
@@ -116,5 +113,8 @@
         <action
             android:id="@+id/action_analyzeTextFragment_to_classroomScheduleFragment"
             app:destination="@id/classroomScheduleFragment" />
+        <action
+            android:id="@+id/action_analyzeTextFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
     </fragment>
 </navigation>

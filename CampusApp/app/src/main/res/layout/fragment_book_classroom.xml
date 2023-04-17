@@ -5,183 +5,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/analyseText"
-        android:layout_width="122dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="96dp"
-        android:text="@string/analyse_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="122dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <EditText
         android:id="@+id/textView8"
         android:layout_width="244dp"
         android:layout_height="67dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="256dp"
         android:autofillHints="Where are you going?"
-        android:inputType="text"
         android:hint="@string/what_classroom_are_you_looking_for"
+        android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="LabelFor,TextSizeCheck" />
 
-    <TableLayout
-        android:id="@+id/roomSchedule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/analyseText"
+        android:layout_width="115dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="344dp"
+        android:layout_marginEnd="212dp"
+        android:text="@string/analyse_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TableRow android:background="@color/blue">
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="115dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="344dp"
+        android:layout_marginEnd="84dp"
+        android:text="@string/search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_weight="@integer/material_motion_duration_long_1"
-                android:padding="20sp"
-                android:text="@string/schedule2"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow
-            android:background="@color/light_blue"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="Monday"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="14:00-16:00"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="185dp"
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="Free"
-                android:textSize="20sp" />
-
-
-        </TableRow>
-
-        <TableRow>
-
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="16:00-18:00"
-                android:textSize="20sp" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="Course 2"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:background="@color/light_blue"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="Tuesday"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="13:00-15:00"
-                android:textSize="20sp" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="Course 1"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="15:00-17:00"
-                android:textSize="20sp" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="Free"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:background="@color/light_blue"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="@string/wednesday"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="10:00-13:00"
-                android:textSize="20sp" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="Course 3"
-                android:textSize="20sp" />
-        </TableRow>
-    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
