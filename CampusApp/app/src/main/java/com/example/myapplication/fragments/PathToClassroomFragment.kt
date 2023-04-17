@@ -168,6 +168,7 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         "13" -> dest = m.fisica.coordinate
                         "15" -> dest = m.quimica.coordinate
                         "16" -> dest = m.geociencias.coordinate
+                        "17" -> dest = GeoPoint(40.63116544468107, -8.659630330862388)
                         "20" -> dest = m.estga.coordinate
                         "21" -> dest = m.artes.coordinate
                         "22" -> dest = m.meca.coordinate
