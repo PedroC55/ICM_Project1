@@ -154,9 +154,11 @@ import java.util.concurrent.Executors
                                     var rv = requireActivity().findViewById<RecyclerView>(R.id.recyclerView2)
                                     var rva = rv.adapter as ScheduleAdapter
                                     rva.sClassroom(elementText)
+                                    rva.switchMarks(elementText, DatabaseInfo(requireContext(), null))
                                     Log.d("rva2", rva.toString())
+                                    rv.adapter = rva
 
-                                    //rva.sClassroom(elementText)
+
                                     val fragment = requireActivity().supportFragmentManager.findFragmentById(R.id.ll_wrapper)
                                     var navController = fragment?.findNavController()!!
                                     navController.navigate(R.id.scheduleFragment)

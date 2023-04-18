@@ -27,7 +27,7 @@ class ClassroomScheduleFragment : Fragment(R.layout.fragment_book_classroom) {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_book_classroom, container, false)
-
+        val db = DatabaseInfo(requireContext(), null)
         /*val rs = view.findViewById<TableLayout>(R.id.roomSchedule)
         rs.visibility = View.GONE*/
         val roomToSearch = view.findViewById<EditText>(R.id.textView8)
@@ -36,6 +36,8 @@ class ClassroomScheduleFragment : Fragment(R.layout.fragment_book_classroom) {
             var rv = requireActivity().findViewById<RecyclerView>(R.id.recyclerView2)
             var rva = rv.adapter as ScheduleAdapter
             rva.sClassroom(roomToSearch.text.toString())
+            rva.switchMarks(roomToSearch.text.toString(), db)
+            rv.adapter = rva
             val fragment = requireActivity().supportFragmentManager.findFragmentById(R.id.ll_wrapper)
             var navController = fragment?.findNavController()!!
             navController.navigate(R.id.scheduleFragment)

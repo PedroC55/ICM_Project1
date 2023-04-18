@@ -7,14 +7,16 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
+import android.util.Log
 import com.example.myapplication.classes.Events
 import com.example.myapplication.classes.User
 import kotlin.properties.Delegates
 import java.io.File
-
+import java.io.InputStreamReader
 
 
 class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLiteOpenHelper (context, DATABASE_NAME, factory, 2){
+    var context2 = context
     companion object{
         val DATABASE_NAME = "campusappDB"
     }
@@ -136,13 +138,16 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         p0.execSQL(SQL_CREATE_TABLE_CSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_SSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_FRIENDS_QUERY)
-        val file = File("querys.txt")
-        val reader = file.bufferedReader()
-        reader.useLines { lines ->
-            lines.forEach {
+
+        val inputStream = Thread.currentThread().contextClassLoader.getResourceAsStream("assets/querys.txt")
+        inputStream.bufferedReader().use { reader ->
+            reader.forEachLine {
+                Log.d("REader todo mocado", it)
                 p0.execSQL(it)
             }
+
         }
+
     }
 
     override fun onUpgrade(p0: SQLiteDatabase, p1: Int, p2: Int) {

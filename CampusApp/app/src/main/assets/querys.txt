@@ -1,67 +1,52 @@
+INSERT INTO users (name, age, email, password, nMec, phoneNumber, nif, nationality) VALUES ("Aarav Patel", 20, "apatel@ua.pt", "cagandapatel", 99999, 916677889, 111111111, "IN")
+INSERT INTO events (name, location, hours, numberOfPersons, description, tag, createdBy) VALUES ("Watch Last CS:GO Major", "Biblioteca", "14:00 23/04/2023", 10, "Go Fnatic!", "Game Night", 1)
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Mon-08:00-10:00", "CBD");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Mon-10:00-12:00", "Free");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Mon-12:00-14:00", "BD");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Mon-14:00-16:00", "SIO");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Mon-16:00-18:00", "Free");
-
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Tue-08:00-10:00", "Free");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Tue-10:00-12:00", "Free");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Tue-12:00-14:00", "IES");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Tue-14:00-16:00", "TQS");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Tue-16:00-18:00", "MAS");
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Wed-08:00-10:00", "IA");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Wed-10:00-12:00", "C");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Wed-12:00-14:00", "Free");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Wed-14:00-16:00", "Free");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Wed-16:00-18:00", "Free");
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Thu-08:00-10:00", "CD");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Thu-10:00-12:00", "PDS");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Thu-12:00-14:00", "APSEI");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Thu-14:00-16:00", "Free");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Thu-16:00-18:00", "Free");
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Fri-08:00-10:00", "IAC");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Fri-10:00-12:00", "FP");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Fri-12:00-14:00", "ITW");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Fri-14:00-16:00", "ICM");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("04.01.06", "Fri-16:00-18:00", "Free");
-
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Mon-08:00-10:00", "EF");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Mon-10:00-12:00", "C1");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Mon-12:00-14:00", "C2");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Mon-14:00-16:00", "ALGA");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Mon-16:00-18:00", "BC");
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Tue-08:00-10:00", "MD");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Tue-10:00-12:00", "EQF");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Tue-12:00-14:000", "QQ");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Tue-14:00-16:00", "FCV");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Tue-16:00-18:00", "MOP");
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Wed-08:00-10:00", "QOO");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Wed-10:00-12:00", "POO");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Wed-12:00-14:00", "NOI");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Wed-14:00-16:00", "Free");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Wed-16:00-18:00", "Free");
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Thu-08:00-10:00", "CA");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Thu-10:00-12:00", "PP");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Thu-12:00-14:00", "ML");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Thu-14:00-16:00", "DC");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Thu-16:00-18:00", "M");
-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-08:00-10:00", "PE");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-10:00-12:00", "EA");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-12:00-14:00", "RC");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-14:00-16:00", "SM");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-16:00-18:00", "AED");
-
-INSERT INTO users (name, age, email, password, nMec, phoneNumber, nif, nationality) INTO ("Aarav Patel", 20, "apatel@ua.pt", "cagandapatel", 99999, 916677889, 111111111, "IN")
-
-
-
-INSERT INTO events (name, location, hours, numberOfPersons, description, tag, createdBy) VALUES ("Watch Last CS:GO Major", "Biblioteca", "14:00 23/04/2023", 10, "Go Fnatic!", "Game Night", 1)

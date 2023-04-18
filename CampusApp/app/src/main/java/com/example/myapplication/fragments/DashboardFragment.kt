@@ -79,16 +79,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
 
 
-        cv.findViewById<TextView>(R.id.item_title).text = e.getString(1).toString()
-        cv.findViewById<TextView>(R.id.item_description).text = e.getString(5).toString()
-        when (e.getString(6)){
-            "Cinema" -> cv.findViewById<ImageView>(R.id.item_image).setImageResource(R.drawable.cinema)
-            "Beach" -> cv.findViewById<ImageView>(R.id.item_image).setImageResource(R.drawable.praia)
-            "Party" -> cv.findViewById<ImageView>(R.id.item_image).setImageResource(R.drawable.festa)
-            "Sports" -> cv.findViewById<ImageView>(R.id.item_image).setImageResource(R.drawable.desporto1)
-            "Game Night" -> cv.findViewById<ImageView>(R.id.item_image).setImageResource(R.drawable.gamenightlogocolor)
-            "Concert" -> cv.findViewById<ImageView>(R.id.item_image).setImageResource(R.drawable.concerto)
-        }
+        
         return view
     }
 

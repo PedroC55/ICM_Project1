@@ -52,15 +52,14 @@ class ScheduleAdapter: RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val db = DatabaseInfo(parent.context, null)
-        Log.d("VISIBILITY223",classroom)
         var s = db.getSchedule(classroom)
         s.moveToFirst()
-        Log.d("VISIBILITY223",s.getString(1))
+        marks.add(s.getString(3))
         while(s.moveToNext()){
-            Log.d("VISIBILITY223", s.getString(3))
             marks.add(s.getString(3))
 
         }
+        Log.d("Marks:", marks.toString())
 
 
         val v = LayoutInflater.from(parent.context)
@@ -80,11 +79,36 @@ class ScheduleAdapter: RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
         holder.hour3.text = hours[2]
         holder.hour4.text = hours[3]
         holder.hour5.text = hours[4]
-        holder.mark1.text = marks[position]
-        holder.mark2.text = marks[position+1]
-        holder.mark3.text = marks[position+2]
-        holder.mark4.text = marks[position+3]
-        holder.mark5.text = marks[position+4]
+        var itemidDef = itemID()
+
+        holder.mark1.text = marks[position+ (itemidDef*(itemCount-1))]
+
+        holder.mark2.text = marks[position+1 + (itemidDef*(itemCount-1))]
+
+        holder.mark3.text = marks[position+2 + (itemidDef*(itemCount-1))]
+
+        holder.mark4.text = marks[position+3 + (itemidDef*(itemCount-1))]
+
+        holder.mark5.text = marks[position+4 + (itemidDef*(itemCount-1))]
+
+    }
+
+    fun switchMarks(string:String , db: DatabaseInfo){
+        id2 = -1
+        marks.clear()
+        var s = db.getSchedule(classroom)
+        s.moveToFirst()
+        marks.add(s.getString(3))
+        while(s.moveToNext()){
+            marks.add(s.getString(3))
+
+        }
+
+    }
+    var id2 = -1
+    fun itemID(): Int{
+        id2 = id2 +1
+        return id2
     }
 
     override fun getItemCount(): Int {

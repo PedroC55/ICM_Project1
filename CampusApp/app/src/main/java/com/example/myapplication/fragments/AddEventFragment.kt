@@ -1,6 +1,7 @@
 package com.example.myapplication.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,19 +49,33 @@ class AddEventFragment : Fragment(R.layout.fragment_create_event_for_test) {
             val location = b.text.toString()
             val c : EditText = view.findViewById(R.id.enterHours)
             val d : EditText = view.findViewById(R.id.enterNP)
-            val np = d.text.toString().toInt()
+            val rv : RecyclerView = requireActivity().findViewById(R.id.recyclerView)
+
+
             val tag = spinner.selectedItem.toString()
             val e : EditText = view.findViewById(R.id.enterDescription)
             val description = e.text.toString()
             // calling method to add
             // name to our database
-            if(isValidDate(c.text.toString())){
+            Log.d("mais u log:", (d.text.toString().toIntOrNull() != null).toString())
+            if(isValidDate(c.text.toString()) && d.text.toString().toIntOrNull() != null){
                 val hours = c.text.toString()
+                val np = d.text.toString().toInt()
                 val ev: Events = Events(name, location, hours, np, description, tag, rva.getCurrentUser())
+
                 db.insertEventsData(ev)
+                var rva1 = rv.adapter as RecyclerViewAdapter
+                rva1.hasTag("All", db)
+                rv.adapter=rva1
                 view.findNavController().navigate(R.id.action_addEventFragment_to_dashboardFragment)
             }else{
-                c.error = "Date not Valid! (hh:mm dd/MM/yyyy)"
+                if(!isValidDate(c.text.toString())){
+                    c.error = "Date not Valid! (hh:mm dd/MM/yyyy)"
+                }
+                if(d.text.toString().toIntOrNull() == null){
+                    d.error = "Number of people must be a number!"
+                }
+
             }
         }
         return view
