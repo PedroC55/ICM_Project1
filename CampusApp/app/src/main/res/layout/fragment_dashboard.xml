@@ -12,7 +12,8 @@
         style="?android:attr/spinnerItemStyle"
         android:layout_width="216dp"
         android:layout_height="48dp"
-        android:layout_margin="20sp"
+
+
         android:contentDescription="Choose Tag"
         android:minHeight="48dp"
         android:singleLine="true"
@@ -20,7 +21,7 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/fl"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.533" />
@@ -28,8 +29,9 @@
     <FrameLayout
         android:id="@+id/fl"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="600dp"
         android:layout_gravity="bottom"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +57,8 @@
         android:layout_width="101dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="25dp"
         android:text="Filter"
         app:layout_constraintBottom_toTopOf="@+id/fl"
         app:layout_constraintEnd_toEndOf="parent"
