@@ -10,6 +10,8 @@ import android.provider.BaseColumns
 import com.example.myapplication.classes.Events
 import com.example.myapplication.classes.User
 import kotlin.properties.Delegates
+import java.io.File
+
 
 
 class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : SQLiteOpenHelper (context, DATABASE_NAME, factory, 2){
@@ -134,6 +136,13 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         p0.execSQL(SQL_CREATE_TABLE_CSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_SSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_FRIENDS_QUERY)
+        val file = File("querys.txt")
+        val reader = file.bufferedReader()
+        reader.useLines { lines ->
+            lines.forEach {
+                p0.execSQL(it)
+            }
+        }
     }
 
     override fun onUpgrade(p0: SQLiteDatabase, p1: Int, p2: Int) {
@@ -210,14 +219,11 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         return event
     }
 
-    var classroom by Delegates.notNull<String>()
-    fun sClassroom(s: String){
-        classroom = s
-    }
 
-    fun getClassroomByNumber():Cursor{
+
+    fun getSchedule(classroom:String):Cursor{
         val db = this.readableDatabase
-        val classR = db.rawQuery("SELECT * FROM cSchedule WHERE roomnumber=$classroom;", null)
+        val classR = db.rawQuery("SELECT * FROM cSchedule WHERE roomnumber='$classroom';", null)
         return classR
     }
 

@@ -50,7 +50,6 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        Log.d("passseeeiii aquiiii", "passssssssssssssssssssss")
         val db = DatabaseInfo(parent.context, null)
         val c = db.getEventsByTag(tag1)
         c.moveToFirst()

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="402dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="402dp"
+        android:foregroundGravity="top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:background="@color/light_blue"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/day"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="Monday"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/hour1"
+                android:layout_width="239dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="14:00-16:00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mark1"
+                android:layout_width="239dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="Free"
+                android:textSize="20sp" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/hour2"
+                android:layout_width="239dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="14:00-16:00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mark2"
+                android:layout_width="239dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="Free"
+                android:textSize="20sp" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/hour3"
+                android:layout_width="239dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="14:00-16:00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mark3"
+                android:layout_width="239dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="Free"
+                android:textSize="20sp" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/hour4"
+                android:layout_width="239dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="14:00-16:00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mark4"
+                android:layout_width="239dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="Free"
+                android:textSize="20sp" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/hour5"
+                android:layout_width="239dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="14:00-16:00"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mark5"
+                android:layout_width="239dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="20sp"
+                android:text="Free"
+                android:textSize="20sp" />
+
+
+        </TableRow>
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

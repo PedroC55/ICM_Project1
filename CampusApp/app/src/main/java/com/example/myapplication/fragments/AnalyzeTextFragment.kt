@@ -18,13 +18,17 @@ import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.classes.RecyclerViewAdapter
+import com.example.myapplication.classes.ScheduleAdapter
 import com.example.myapplication.database.DatabaseInfo
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import com.tomtom.sdk.map.display.internal.db
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -147,14 +151,15 @@ import java.util.concurrent.Executors
                                 val elementFrame = element.boundingBox
                                 Log.d("AIIII", elementText)
                                 if(element.text.matches(Regex("\\d{2}.\\d{2}.\\d{2}"))){
-                                    val db = DatabaseInfo(requireContext(), null)
-                                    db.sClassroom(element.text)
-                                    val bundle = Bundle()
-                                    bundle.putString("sala", element.text)
+                                    var rv = requireActivity().findViewById<RecyclerView>(R.id.recyclerView2)
+                                    var rva = rv.adapter as ScheduleAdapter
+                                    rva.sClassroom(elementText)
+                                    Log.d("rva2", rva.toString())
+
+                                    //rva.sClassroom(elementText)
                                     val fragment = requireActivity().supportFragmentManager.findFragmentById(R.id.ll_wrapper)
                                     var navController = fragment?.findNavController()!!
-                                    navController.navigate(R.id.action_analyzeTextFragment_to_scheduleFragment)
-                                    //findNavController().navigate(R.id.action_analyzeTextFragment_to_classroomScheduleFragment)
+                                    navController.navigate(R.id.scheduleFragment)
                                 }
                             }
                         }

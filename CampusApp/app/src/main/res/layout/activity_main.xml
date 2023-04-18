@@ -17,6 +17,13 @@
             android:layout_marginTop="50dp"
 
             />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:transitionGroup="true"
+            />
         <fragment
             android:id="@+id/ll_wrapper"
             android:name="androidx.navigation.fragment.NavHostFragment"
