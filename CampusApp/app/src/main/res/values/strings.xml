@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CampusApp</string>
+    <string name="app_name">MovingCampus</string>
     <string name="classroom_search">Classroom Search</string>
     <string name="schedule">Schedule</string>
     <string name="courses">Courses</string>

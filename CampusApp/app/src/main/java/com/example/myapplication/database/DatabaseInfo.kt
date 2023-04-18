@@ -240,7 +240,7 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
 
     fun getStudentSchedule(student:Int):Cursor{
         val db = this.readableDatabase
-        val classR = db.rawQuery("SELECT * FROM sSchedule WHERE nMec=$student;", null)
+        val classR = db.rawQuery("SELECT * FROM sSchedule WHERE studentNMec=$student;", null)
         return classR
     }
 

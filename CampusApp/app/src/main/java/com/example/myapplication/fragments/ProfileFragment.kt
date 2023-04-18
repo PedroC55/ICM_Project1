@@ -29,9 +29,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
         val rv : RecyclerView = requireActivity().findViewById(R.id.recyclerView)
+
         var rva = rv.adapter as RecyclerViewAdapter
         val db = DatabaseInfo(requireContext(), null)
         if(rva.num==2){
+            view.findViewById<TextView>(R.id.textView9).visibility=View.GONE
             val i = rva.ts
             val u = db.getUserById(i)
             u.moveToFirst()
@@ -53,12 +55,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             rv.adapter = rva
         }
         else{
+            view.findViewById<TextView>(R.id.textView9).visibility=View.VISIBLE
             val i = rva.getCurrentUser()
             val u = db.getUserById(i)
             val rv3 : RecyclerView = requireActivity().findViewById(R.id.recyclerView3)
+            rv3.visibility = View.VISIBLE
             var rva3 = rv3.adapter as StudentScheduleAdapter
-
             u.moveToFirst()
+            rva3.student = u.getString(5).toInt()
+            rv3.adapter = rva3
+
             val name = view.findViewById<TextView>(R.id.textView10)
             name.text = u.getString(1)
             val age = view.findViewById<TextView>(R.id.age)
@@ -73,12 +79,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             nif.text = getString(R.string.nif, u.getString(7))
             val nationality = view.findViewById<TextView>(R.id.nationality)
             nationality.text = getString(R.string.localidade, u.getString(8))
-            rva3.student = u.getString(5).toInt()
-            rv3.adapter = rva3
-            rv3.visibility = View.VISIBLE
         }
 
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val rv3 : RecyclerView = requireActivity().findViewById(R.id.recyclerView3)
+        rv3.visibility = View.GONE
     }
 
 }

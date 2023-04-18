@@ -80,16 +80,11 @@ class ScheduleAdapter: RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
         holder.hour4.text = hours[3]
         holder.hour5.text = hours[4]
         var itemidDef = itemID()
-
-
         holder.mark1.text = marks[position+ (itemidDef*(itemCount-1))]
         holder.mark2.text = marks[position+1 + (itemidDef*(itemCount-1))]
         holder.mark3.text = marks[position+2 + (itemidDef*(itemCount-1))]
         holder.mark4.text = marks[position+3 + (itemidDef*(itemCount-1))]
         holder.mark5.text = marks[position+4 + (itemidDef*(itemCount-1))]
-
-        holder.hour5.visibility = View.GONE
-        holder.mark5.visibility = View.GONE
     }
 
     fun switchMarks(string:String , db: DatabaseInfo){

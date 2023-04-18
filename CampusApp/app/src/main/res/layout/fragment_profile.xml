@@ -1,150 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#2196F3">
-
-
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        android:src="@drawable/user"
-        />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/profile"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="106dp"
-        android:layout_marginEnd="65dp"
-        android:text="@string/alberto_dos_reis"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TableLayout
-        android:layout_width="409dp"
-        android:layout_height="260dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="1dp"
-        android:background="#FAF9F9"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TableRow
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#8BC34A">
+            android:layout_height="350dp"
+            android:background="@color/white"
+            android:scrollbars="vertical">
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="268dp"
+                android:src="@drawable/user"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textView10"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="10sp"
-                android:text="@string/informa_es_pessoais"
-                android:textSize="13sp" />
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="65dp"
+                android:text="@string/alberto_dos_reis"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </TableRow>
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="30dp"
+                android:background="#FAF9F9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                app:layout_constraintVertical_bias="0.0">
 
-        <TableRow android:gravity="center_horizontal">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/blue">
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="10sp"
+                        android:text="@string/informa_es_pessoais"
+                        android:textSize="13sp" />
+
+                </TableRow>
+
+                <TableRow android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/age"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/age"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/email"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/nMec"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/n_mec"
+                        android:textSize="13sp" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/phoneNumber"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/telem_vel"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/nif"
+                        android:layout_width="108dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/nif"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/nationality"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20sp"
+                        android:text="@string/localidade"
+                        android:textSize="13sp" />
+
+                </TableRow>
+            </TableLayout>
 
             <TextView
-                android:id="@+id/age"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="@string/age"
-                android:textSize="13sp" />
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/schedule"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
-            <TextView
-                android:id="@+id/email"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="@string/email"
-                android:textSize="13sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
 
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/nMec"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="@string/n_mec"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/phoneNumber"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="@string/telem_vel"
-                android:textSize="13sp" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/nif"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="@string/nif"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/nationality"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="20sp"
-                android:text="@string/localidade"
-                android:textSize="13sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

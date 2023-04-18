@@ -52,6 +52,8 @@ import com.tomtom.sdk.routing.RoutePlanningCallback
 import com.tomtom.sdk.routing.RoutePlanningResponse
 import com.tomtom.sdk.routing.RoutingFailure
 import com.example.myapplication.classes.Markers
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.tomtom.sdk.map.display.camera.CameraChangeListener
 import com.tomtom.sdk.map.display.internal.da
 import com.tomtom.sdk.map.display.marker.Marker
@@ -148,6 +150,7 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
             }
             var button = view.findViewById<Button>(R.id.button2)
             button.setOnClickListener(){
+                requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
                 var dest : GeoPoint?=null
                 var localToGo = view.findViewById<EditText>(R.id.textView8).text.toString()
                 if (localToGo.length>1){
@@ -187,44 +190,56 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         "N" -> dest = m.casaEst.coordinate
                     }
                 }
+                if(locationProvider.lastKnownLocation!=null){
+                    mapFragment.getMapAsync(){
+                        it.removeRoutes()
+                        val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
+                        val routePlanningOptions = RoutePlanningOptions(
+                            itinerary = Itinerary(origin = locationProvider.lastKnownLocation!!.position, destination = dest!!),
+                            costModel = CostModel(routeType = RouteType.Efficient),
+                            vehicle = Vehicle.Pedestrian(),
+                            alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
+                        )
+                        var list = mutableListOf<GeoPoint>()
+                        it.setFrameRate(24)
+                        routePlanner.planRoute(
+                            routePlanningOptions,
+                            object : RoutePlanningCallback {
+                                override fun onSuccess(result: RoutePlanningResponse) {
+                                    for (i in result.routes.get(0).routePoints){
+                                        list.add(i.coordinate)
 
-                mapFragment.getMapAsync(){
-                    it.removeRoutes()
-                    val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
-                    val routePlanningOptions = RoutePlanningOptions(
-                        itinerary = Itinerary(origin = locationProvider.lastKnownLocation!!.position, destination = dest!!),
-                        costModel = CostModel(routeType = RouteType.Efficient),
-                        vehicle = Vehicle.Pedestrian(),
-                        alternativeRoutesOptions = AlternativeRoutesOptions(maxAlternatives = 2)
-                    )
-                    var list = mutableListOf<GeoPoint>()
-                    it.setFrameRate(24)
-                    routePlanner.planRoute(
-                        routePlanningOptions,
-                        object : RoutePlanningCallback {
-                            override fun onSuccess(result: RoutePlanningResponse) {
-                                for (i in result.routes.get(0).routePoints){
-                                    list.add(i.coordinate)
-
+                                    }
+                                    val routeOptions = RouteOptions(
+                                        geometry = list,
+                                        color = Color.BLUE,
+                                        outlineWidth = 0.7,
+                                        widths = listOf(WidthByZoom(5.0)),
+                                        tag = "Extra information about the route",
+                                        departureMarkerVisible = true,
+                                        destinationMarkerVisible = true
+                                    )
+                                    val route = it.addRoute(routeOptions)
                                 }
-                                val routeOptions = RouteOptions(
-                                    geometry = list,
-                                    color = Color.BLUE,
-                                    outlineWidth = 0.7,
-                                    widths = listOf(WidthByZoom(5.0)),
-                                    tag = "Extra information about the route",
-                                    departureMarkerVisible = true,
-                                    destinationMarkerVisible = true
-                                )
-                                val route = it.addRoute(routeOptions)
+                                override fun onFailure(failure: RoutingFailure) {
+                                }
+                                override fun onRoutePlanned(route: com.tomtom.sdk.routing.route.Route) {
+                                }
                             }
-                            override fun onFailure(failure: RoutingFailure) {
-                            }
-                            override fun onRoutePlanned(route: com.tomtom.sdk.routing.route.Route) {
-                            }
-                        }
-                    )
+                        )
+                    }
+                }else{
+                    Snackbar.make(
+                        view.findViewById(R.id.myCoordinatorLayout),
+                        "Can't find current location!",
+                        Snackbar.LENGTH_SHORT
+                    ).apply { anchorView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation) }
+                        .show()
+
+
                 }
+
+
             }
         }
         return view
