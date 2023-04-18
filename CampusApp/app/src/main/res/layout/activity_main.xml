@@ -24,6 +24,14 @@
             android:layout_height="match_parent"
             android:transitionGroup="true"
             />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:transitionGroup="true"
+            android:layout_marginTop="450dp"
+            />
         <fragment
             android:id="@+id/ll_wrapper"
             android:name="androidx.navigation.fragment.NavHostFragment"

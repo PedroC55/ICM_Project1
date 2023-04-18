@@ -12,6 +12,7 @@ import androidx.fragment.app.findFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.classes.RecyclerViewAdapter
+import com.example.myapplication.classes.StudentScheduleAdapter
 import com.example.myapplication.classes.User
 import com.example.myapplication.database.DatabaseInfo
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,12 +27,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.GONE
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
         val rv : RecyclerView = requireActivity().findViewById(R.id.recyclerView)
         var rva = rv.adapter as RecyclerViewAdapter
         val db = DatabaseInfo(requireContext(), null)
-        if(rva.getProfile()==2){
-            val i = rva.getUserToSee()
+        if(rva.num==2){
+            val i = rva.ts
             val u = db.getUserById(i)
             u.moveToFirst()
             val name = view.findViewById<TextView>(R.id.textView10)
@@ -48,11 +49,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             nif.text = getString(R.string.nif, u.getString(7))
             val nationality = view.findViewById<TextView>(R.id.nationality)
             nationality.text = getString(R.string.localidade, u.getString(8))
-            rva.setProfile(1)
+            rva.num = 1
+            rv.adapter = rva
         }
         else{
-            val i = rva.getUserToSee()
+            val i = rva.getCurrentUser()
             val u = db.getUserById(i)
+            val rv3 : RecyclerView = requireActivity().findViewById(R.id.recyclerView3)
+            var rva3 = rv3.adapter as StudentScheduleAdapter
+
             u.moveToFirst()
             val name = view.findViewById<TextView>(R.id.textView10)
             name.text = u.getString(1)
@@ -68,6 +73,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             nif.text = getString(R.string.nif, u.getString(7))
             val nationality = view.findViewById<TextView>(R.id.nationality)
             nationality.text = getString(R.string.localidade, u.getString(8))
+            rva3.student = u.getString(5).toInt()
+            rv3.adapter = rva3
+            rv3.visibility = View.VISIBLE
         }
 
         return view

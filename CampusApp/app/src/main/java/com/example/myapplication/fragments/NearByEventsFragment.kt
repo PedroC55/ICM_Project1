@@ -35,7 +35,7 @@ class NearByEventsFragment : Fragment(R.layout.fragment_events) {
         var rva = rv.adapter as RecyclerViewAdapter
 
         val db = DatabaseInfo(requireContext(), null)
-        val e = db.getEventById(rva.getitemid())
+        val e = db.getEventByName(rva.gName())
         e.moveToFirst()
 
         val view = inflater.inflate(R.layout.fragment_events, container, false)
@@ -64,8 +64,8 @@ class NearByEventsFragment : Fragment(R.layout.fragment_events) {
         c.moveToFirst()
         creator.text = getString(R.string.creator, c.getString(1))
         creator.setOnClickListener{
-            rva.setProfile(2)
-            rva.setUserToSee(e.getString(7).toInt())
+            rva.num = 2
+            rva.ts = e.getString(7).toInt()
             findNavController().navigate(R.id.action_nearByEventsFragment_to_profileFragment)
         }
         return view

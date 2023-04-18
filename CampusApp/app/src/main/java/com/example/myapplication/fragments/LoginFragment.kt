@@ -49,7 +49,8 @@ class LoginFragment : Fragment(R.layout.login) {
                 }
                 else{
                     var rva = requireActivity().findViewById<RecyclerView>(R.id.recyclerView).adapter as RecyclerViewAdapter
-                    rva.setCurrentUser(c.getString(0).toInt())
+                    rva.u = c.getString(0).toInt()
+                    requireActivity().findViewById<RecyclerView>(R.id.recyclerView).adapter = rva
                     requireActivity().findViewById<RecyclerView>(R.id.recyclerView).visibility = View.VISIBLE
                     view.findNavController().navigate(R.id.action_loginFragment_to_dashboardFragment)
                 }

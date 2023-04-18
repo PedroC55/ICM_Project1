@@ -50,3 +50,25 @@ INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-10:00-
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-12:00-14:00", "RC");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-14:00-16:00", "SM");
 INSERT INTO cSchedule (roomNumber, hours, marks) VALUES ("23.02.07", "Fri-16:00-18:00", "AED");
+
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-14:00-16:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Tue-14:00-16:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Tue-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Wed-08:00-10:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Wed-10:00-12:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Wed-14:00-16:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Thu-08:00-10:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Thu-10:00-12:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Thu-14:00-16:00", "AED");
+
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");
+INSERT INTO sSchedule (nMec, hours, marks) VALUES (98652, "Mon-16:00-18:00", "AED");

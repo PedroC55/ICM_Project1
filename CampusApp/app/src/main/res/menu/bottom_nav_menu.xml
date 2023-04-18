@@ -13,4 +13,7 @@
     <item android:id="@+id/ic_classroom"
         android:title="Classroom"
         android:icon="@drawable/baseline_meeting_room_24"/>
+    <item android:id="@+id/ic_profile"
+        android:title="Profile"
+        android:icon="@drawable/user"/>
 </menu>

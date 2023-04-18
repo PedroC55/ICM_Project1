@@ -100,9 +100,20 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
         return itemid + 1
     }
 
+
+
     var u by Delegates.notNull<Int>()
     var ts by Delegates.notNull<Int>()
     var num by Delegates.notNull<Int>()
+    var name by Delegates.notNull<String>()
+
+    fun sName(n: String){
+        name = n
+    }
+
+    fun gName(): String{
+        return name
+    }
 
     fun setProfile(n: Int) {
         num = n
@@ -142,6 +153,7 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
                 "Clicked on the item: " + holder.textTitle.text.toString(),
                 Toast.LENGTH_SHORT
             ).show()
+            sName(itemTitles[position])
             navCo.navigate(R.id.action_dashboardFragment_to_nearByEventsFragment)
             itemid = position
         }

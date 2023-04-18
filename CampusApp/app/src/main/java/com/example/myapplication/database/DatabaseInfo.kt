@@ -224,11 +224,23 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         return event
     }
 
+    fun getEventByName(sss : String):Cursor{
+        val db = this.readableDatabase
+        val event = db.rawQuery("SELECT * FROM events WHERE name='$sss';", null)
+        return event
+    }
+
 
 
     fun getSchedule(classroom:String):Cursor{
         val db = this.readableDatabase
         val classR = db.rawQuery("SELECT * FROM cSchedule WHERE roomnumber='$classroom';", null)
+        return classR
+    }
+
+    fun getStudentSchedule(student:Int):Cursor{
+        val db = this.readableDatabase
+        val classR = db.rawQuery("SELECT * FROM sSchedule WHERE nMec=$student;", null)
         return classR
     }
 

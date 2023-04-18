@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 
 import androidx.cardview.widget.CardView
@@ -46,7 +47,9 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         var rva = rv.adapter as RecyclerViewAdapter
         rva.setNav(findNavController())
         rv.adapter=rva
-
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // With blank your fragment BackPressed will be disabled.
+        }
         val db = DatabaseInfo(requireContext(), null)
         val e = db.getEventById(1)
         e.moveToFirst()

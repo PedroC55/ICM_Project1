@@ -27,6 +27,8 @@ class ScheduleFragment : Fragment(R.layout.fragment_schedule) {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_schedule, container, false)
         requireActivity().findViewById<RecyclerView>(R.id.recyclerView2).visibility = View.VISIBLE
+
+
         return view
     }
 
