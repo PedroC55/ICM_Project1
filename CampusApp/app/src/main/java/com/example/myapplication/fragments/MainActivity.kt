@@ -1,29 +1,14 @@
 package com.example.myapplication.fragments
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.myapplication.R
-import com.example.myapplication.classes.Events
 import com.example.myapplication.database.DatabaseInfo
 import com.example.myapplication.classes.RecyclerViewAdapter
 import com.example.myapplication.classes.ScheduleAdapter
@@ -81,10 +66,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter=rva
 
         val bottomNavigationView =  findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        /*val DashboardFragment = DashboardFragment()
-        val MapFragment = PathToClassroomFragment()
-        val NearByEventsFragment = FindCampusFragment()
-        val ClassroomScheduleFragment = ClassroomScheduleFragment()*/
 
         bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
@@ -98,10 +79,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    /*private fun makeCurrentFragment(fragment: Fragment) =
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.ll_wrapper, fragment)
-            commit()
-        }*/
 }

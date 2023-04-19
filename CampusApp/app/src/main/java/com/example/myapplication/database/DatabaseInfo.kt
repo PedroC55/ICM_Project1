@@ -142,7 +142,6 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
         val inputStream = Thread.currentThread().contextClassLoader.getResourceAsStream("assets/querys.txt")
         inputStream.bufferedReader().use { reader ->
             reader.forEachLine {
-                Log.d("REader todo mocado", it)
                 p0.execSQL(it)
             }
 

@@ -5,13 +5,11 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -20,15 +18,11 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.classes.RecyclerViewAdapter
 import com.example.myapplication.classes.ScheduleAdapter
 import com.example.myapplication.database.DatabaseInfo
-import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
-import com.tomtom.sdk.map.display.internal.db
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -149,13 +143,11 @@ import java.util.concurrent.Executors
                                 val elementText = element.text
                                 val elementCornerPoints = element.cornerPoints
                                 val elementFrame = element.boundingBox
-                                Log.d("AIIII", elementText)
                                 if(element.text.matches(Regex("\\d{2}.\\d{2}.\\d{2}"))){
                                     var rv = requireActivity().findViewById<RecyclerView>(R.id.recyclerView2)
                                     var rva = rv.adapter as ScheduleAdapter
                                     rva.sClassroom(elementText)
                                     rva.switchMarks(elementText, DatabaseInfo(requireContext(), null))
-                                    Log.d("rva2", rva.toString())
                                     rv.adapter = rva
 
 

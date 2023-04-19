@@ -148,11 +148,6 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
         holder.textDescription.text = itemDescription[position]
         holder.image.setImageResource(itemImages[position])
         holder.itemView.setOnClickListener { v: View ->
-            Toast.makeText(
-                v.context,
-                "Clicked on the item: " + holder.textTitle.text.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
             sName(itemTitles[position])
             navCo.navigate(R.id.action_dashboardFragment_to_nearByEventsFragment)
             itemid = position

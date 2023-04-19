@@ -1,19 +1,13 @@
 package com.example.myapplication.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableRow
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.classes.RecyclerViewAdapter
-import com.example.myapplication.classes.ScheduleAdapter
-import com.example.myapplication.database.DatabaseInfo
 
 
 class ScheduleFragment : Fragment(R.layout.fragment_schedule) {

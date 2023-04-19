@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +12,8 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.tomtom.quantity.Distance
-import com.tomtom.sdk.common.measures.UnitSystem
 import com.tomtom.sdk.location.GeoLocation
 import com.tomtom.sdk.location.GeoPoint
 import com.tomtom.sdk.location.LocationProvider
@@ -28,39 +25,23 @@ import com.tomtom.sdk.map.display.TomTomMap
 import com.tomtom.sdk.map.display.camera.CameraOptions
 import com.tomtom.sdk.map.display.common.WidthByZoom
 import com.tomtom.sdk.map.display.location.LocationMarkerOptions
-import com.tomtom.sdk.map.display.route.Instruction
-import com.tomtom.sdk.map.display.route.Route
 import com.tomtom.sdk.map.display.route.RouteOptions
 import com.tomtom.sdk.map.display.ui.MapFragment
-import com.tomtom.sdk.map.display.ui.MapReadyCallback
-import com.tomtom.sdk.routing.onboard.client.protos.Directions
 import com.tomtom.sdk.routing.online.OnlineRoutePlanner
-import com.tomtom.sdk.routing.online.OnlineRoutePlanner.Companion.create
 import com.tomtom.sdk.routing.options.Itinerary
 import com.tomtom.sdk.routing.options.RoutePlanningOptions
 import com.tomtom.sdk.routing.options.calculation.AlternativeRoutesOptions
 import com.tomtom.sdk.routing.options.calculation.CostModel
 import com.tomtom.sdk.routing.options.calculation.RouteType
 import com.tomtom.sdk.vehicle.Vehicle
-import kotlin.Result.*
-import com.tomtom.sdk.common.Result
 import com.tomtom.sdk.map.display.gesture.MapPanningListener
-import com.tomtom.sdk.map.display.image.ImageFactory
-import com.tomtom.sdk.map.display.internal.va
-import com.tomtom.sdk.map.display.marker.MarkerOptions
 import com.tomtom.sdk.routing.RoutePlanningCallback
 import com.tomtom.sdk.routing.RoutePlanningResponse
 import com.tomtom.sdk.routing.RoutingFailure
 import com.example.myapplication.classes.Markers
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.tomtom.sdk.map.display.camera.CameraChangeListener
-import com.tomtom.sdk.map.display.internal.da
 import com.tomtom.sdk.map.display.marker.Marker
-import com.tomtom.sdk.search.SearchCallback
-import com.tomtom.sdk.search.SearchOptions
-import com.tomtom.sdk.search.SearchResponse
-import com.tomtom.sdk.search.common.error.SearchFailure
 import com.tomtom.sdk.search.online.OnlineSearch
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -150,8 +131,8 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
             }
             var button = view.findViewById<Button>(R.id.button2)
             button.setOnClickListener(){
-                requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation).visibility = View.VISIBLE
                 var dest : GeoPoint?=null
+                var local = view.findViewById<EditText>(R.id.textView8)
                 var localToGo = view.findViewById<EditText>(R.id.textView8).text.toString()
                 if (localToGo.length>1){
                     var dept = localToGo.split(".")[0]
@@ -190,7 +171,7 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         "N" -> dest = m.casaEst.coordinate
                     }
                 }
-                if(locationProvider.lastKnownLocation!=null){
+                if(locationProvider.lastKnownLocation!=null && dest != null){
                     mapFragment.getMapAsync(){
                         it.removeRoutes()
                         val routePlanner = OnlineRoutePlanner.create(requireContext(), "RPY3qms2zgGKWhmYyymKuclugljTJHbF")
@@ -229,14 +210,17 @@ class PathToClassroomFragment : Fragment(R.layout.fragment_path_to_classroom) {
                         )
                     }
                 }else{
-                    Snackbar.make(
-                        view.findViewById(R.id.myCoordinatorLayout),
-                        "Can't find current location!",
-                        Snackbar.LENGTH_SHORT
-                    ).apply { anchorView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation) }
-                        .show()
-
-
+                    if(locationProvider.lastKnownLocation==null ){
+                        Snackbar.make(
+                            view.findViewById(R.id.myCoordinatorLayout),
+                            "Can't find current location!",
+                            Snackbar.LENGTH_SHORT
+                        ).apply { anchorView = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation) }
+                            .show()
+                    }
+                    if(dest == null){
+                        local.error = "Can't find location"
+                    }
                 }
 
 

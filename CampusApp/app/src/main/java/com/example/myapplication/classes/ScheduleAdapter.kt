@@ -53,14 +53,17 @@ class ScheduleAdapter: RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val db = DatabaseInfo(parent.context, null)
         var s = db.getSchedule(classroom)
-        s.moveToFirst()
-        marks.add(s.getString(3))
-        while(s.moveToNext()){
+        if(s.count>0){
+            itemid=0
+            s.moveToFirst()
             marks.add(s.getString(3))
-
+            while(s.moveToNext()){
+                marks.add(s.getString(3))
+            }
         }
-        Log.d("Marks:", marks.toString())
-
+        else{
+            itemid=-1
+        }
 
         val v = LayoutInflater.from(parent.context)
             .inflate(com.example.myapplication.R.layout.day_schedule, parent, false)
@@ -73,30 +76,52 @@ class ScheduleAdapter: RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
 
     override fun onBindViewHolder(holder: ScheduleAdapter.ViewHolder, position: Int) {
-        holder.day.text = days[position]
-        holder.hour1.text = hours[0]
-        holder.hour2.text = hours[1]
-        holder.hour3.text = hours[2]
-        holder.hour4.text = hours[3]
-        holder.hour5.text = hours[4]
-        var itemidDef = itemID()
-        holder.mark1.text = marks[position+ (itemidDef*(itemCount-1))]
-        holder.mark2.text = marks[position+1 + (itemidDef*(itemCount-1))]
-        holder.mark3.text = marks[position+2 + (itemidDef*(itemCount-1))]
-        holder.mark4.text = marks[position+3 + (itemidDef*(itemCount-1))]
-        holder.mark5.text = marks[position+4 + (itemidDef*(itemCount-1))]
+        if(itemid!=-1){
+            holder.day.text = days[position]
+            holder.hour1.text = hours[0]
+            holder.hour2.text = hours[1]
+            holder.hour3.text = hours[2]
+            holder.hour4.text = hours[3]
+            holder.hour5.text = hours[4]
+            var itemidDef = itemID()
+            holder.mark1.text = marks[position+ (itemidDef*(itemCount-1))]
+            holder.mark2.text = marks[position+1 + (itemidDef*(itemCount-1))]
+            holder.mark3.text = marks[position+2 + (itemidDef*(itemCount-1))]
+            holder.mark4.text = marks[position+3 + (itemidDef*(itemCount-1))]
+            holder.mark5.text = marks[position+4 + (itemidDef*(itemCount-1))]
+        }
+        else{
+            holder.day.visibility=View.GONE
+            holder.hour1.visibility=View.GONE
+            holder.hour2.visibility=View.GONE
+            holder.hour3.visibility=View.GONE
+            holder.hour4.visibility=View.GONE
+            holder.hour5.visibility=View.GONE
+            holder.mark1.visibility=View.GONE
+            holder.mark2.visibility=View.GONE
+            holder.mark3.visibility=View.GONE
+            holder.mark4.visibility=View.GONE
+            holder.mark5.visibility=View.GONE
+        }
+
     }
 
     fun switchMarks(string:String , db: DatabaseInfo){
         id2 = -1
         marks.clear()
         var s = db.getSchedule(classroom)
-        s.moveToFirst()
-        marks.add(s.getString(3))
-        while(s.moveToNext()){
+        if(s.count>0){
+            s.moveToFirst()
             marks.add(s.getString(3))
+            while(s.moveToNext()){
+                marks.add(s.getString(3))
 
+            }
         }
+        else{
+            itemid=-1
+        }
+
 
     }
     var id2 = -1

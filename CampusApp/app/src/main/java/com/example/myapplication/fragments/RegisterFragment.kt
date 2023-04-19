@@ -2,7 +2,6 @@ package com.example.myapplication.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +38,6 @@ class RegisterFragment : Fragment() {
         btn.setOnClickListener{
             if(checkData(a,b,c,d,e,f,g,h)==0){
                 val db = DatabaseInfo(requireContext(),null)
-                Log.d("ENTREI", "YEAH")
                 val name = a.text.toString()
                 val age = b.text.toString().toInt()
                 val email = c.text.toString()
@@ -113,7 +111,6 @@ class RegisterFragment : Fragment() {
             c.error = "Email must be from ua organization"
             ret += 1
         }
-        Log.d("RetValue", ret.toString())
         return ret
     }
 }
