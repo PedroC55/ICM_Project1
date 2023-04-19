@@ -45,11 +45,11 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
                 TableUser.COL_NIF + " INTEGER, " +
                 TableUser.COL_NATIONALITY + " TEXT)"
 
-    val SQL_CREATE_TABLE_CLASSROOM_QUERY =
+    /*val SQL_CREATE_TABLE_CLASSROOM_QUERY =
         "CREATE TABLE " + TableClassroom.TABLE_NAME + " (" +
                 BaseColumns._ID + " INTEGER PRIMARY KEY, " +
                 TableClassroom.COL_ROOMNUMBER + " TEXT, " +
-                TableClassroom.COL_LOCATION + " TEXT)"
+                TableClassroom.COL_LOCATION + " TEXT)"*/
 
     val SQL_CREATE_TABLE_CSCHEDULE_QUERY =
         "CREATE TABLE " + TableCSchedule.TABLE_NAME + " (" +
@@ -134,7 +134,7 @@ class DatabaseInfo(context: Context, factory: SQLiteDatabase.CursorFactory?) : S
     override fun onCreate(p0: SQLiteDatabase) {
         p0.execSQL(SQL_CREATE_TABLE_EVENTS_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_USERS_QUERY)
-        p0.execSQL(SQL_CREATE_TABLE_CLASSROOM_QUERY)
+        /*p0.execSQL(SQL_CREATE_TABLE_CLASSROOM_QUERY)*/
         p0.execSQL(SQL_CREATE_TABLE_CSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_SSCHEDULE_QUERY)
         p0.execSQL(SQL_CREATE_TABLE_FRIENDS_QUERY)
